@@ -1833,12 +1833,15 @@ void SetLED(void *context, int arglen, const void *args,
 }
 
 
-- (void)sendKeyboardEvent:(CGKeyCode)keyCode keyDown:(BOOL)keyDown{
-	CFRelease(CGEventCreate(NULL));
-	// this is Tiger's bug.
-	//see also: http://www.cocoabuilder.com/archive/message/cocoa/2006/10/4/172206
-    
-    
+- (void)sendKeyboardEvent:(CGKeyCode)keyCode keyDown:(BOOL)keyDown
+{
+//	CFRelease(CGEventCreate(NULL));
+//	CGEventRef event = CGEventCreateKeyboardEvent(NULL, keyCode, keyDown);
+//	CGEventPost(kCGHIDEventTap, event);
+//	CFRelease(event);
+
+    // Send system-wide event that e.g. snes9x can see (accessibility API)
+
     AXUIElementRef axSystemWideElement = AXUIElementCreateSystemWide();
     AXError error = AXUIElementPostKeyboardEvent(axSystemWideElement, 0, keyCode, keyDown);
     
@@ -1846,36 +1849,26 @@ void SetLED(void *context, int arglen, const void *args,
         LOG(@"Keyboard post error: %d", error);
     }
     
-
-    
-    
     CFRelease(axSystemWideElement);
 	
-	
-//	CGEventRef event = CGEventCreateKeyboardEvent(NULL, keyCode, keyDown);
-//	CGEventPost(kCGHIDEventTap, event);
-//	CFRelease(event);
-    
 	usleep(10000);
 }
 
 
-- (IBAction)openKeyConfiguration:(id)sender{
+- (IBAction)openKeyConfiguration:(id)sender
+{
 	//[keyConfigWindow setKeyTitle:[sender title]];
     
 	NSManagedObjectContext * context  = [appDelegate managedObjectContext];
     
 	[context commitEditing];
     
-	[NSApp beginSheet:preferenceWindow
-	   modalForWindow:mainWindow
-        modalDelegate:self
-	   didEndSelector:@selector(sheetDidEnd:returnCode:contextInfo:)
-		  contextInfo:nil];
+	[NSApp beginSheet:preferenceWindow modalForWindow:mainWindow modalDelegate:self didEndSelector:@selector(sheetDidEnd:returnCode:contextInfo:) contextInfo:nil];
 	
 }
 
-- (IBAction)cogEnableSampleSize:(id)sender {
+- (IBAction)cogEnableSampleSize:(id)sender
+{
 	if ([cogSampleSizeButton state] == NSOnState) {
 		[cogSampleSize setEnabled:YES];
 	} else {
