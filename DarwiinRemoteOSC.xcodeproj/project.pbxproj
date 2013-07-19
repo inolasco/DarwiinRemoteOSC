@@ -22,20 +22,21 @@
 
 /* Begin PBXBuildFile section */
 		2CFB16C71799921E00A35145 /* Functions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CFB16C61799921E00A35145 /* Functions.m */; };
-		39BECDFB1680764F00FA5787 /* copyright in Resources */ = {isa = PBXBuildFile; fileRef = 39BECDDF1680764F00FA5787 /* copyright */; };
-		39BECDFC1680764F00FA5787 /* NetworkReturnAddress.c in Sources */ = {isa = PBXBuildFile; fileRef = 39BECDE01680764F00FA5787 /* NetworkReturnAddress.c */; };
-		39BECDFD1680764F00FA5787 /* OSC-address-space.c in Sources */ = {isa = PBXBuildFile; fileRef = 39BECDE31680764F00FA5787 /* OSC-address-space.c */; };
-		39BECDFE1680764F00FA5787 /* OSC-callbacklist.c in Sources */ = {isa = PBXBuildFile; fileRef = 39BECDE51680764F00FA5787 /* OSC-callbacklist.c */; };
-		39BECDFF1680764F00FA5787 /* OSC-client.c in Sources */ = {isa = PBXBuildFile; fileRef = 39BECDE71680764F00FA5787 /* OSC-client.c */; };
-		39BECE001680764F00FA5787 /* OSC-drop.c in Sources */ = {isa = PBXBuildFile; fileRef = 39BECDEB1680764F00FA5787 /* OSC-drop.c */; };
-		39BECE011680764F00FA5787 /* OSC-pattern-match.c in Sources */ = {isa = PBXBuildFile; fileRef = 39BECDEE1680764F00FA5787 /* OSC-pattern-match.c */; };
-		39BECE021680764F00FA5787 /* OSC-priority-queue.c in Sources */ = {isa = PBXBuildFile; fileRef = 39BECDF01680764F00FA5787 /* OSC-priority-queue.c */; };
-		39BECE031680764F00FA5787 /* OSC-receive.c in Sources */ = {isa = PBXBuildFile; fileRef = 39BECDF21680764F00FA5787 /* OSC-receive.c */; };
-		39BECE041680764F00FA5787 /* OSC-string-help.c in Sources */ = {isa = PBXBuildFile; fileRef = 39BECDF41680764F00FA5787 /* OSC-string-help.c */; };
-		39BECE051680764F00FA5787 /* OSC-system-dependent.c in Sources */ = {isa = PBXBuildFile; fileRef = 39BECDF61680764F00FA5787 /* OSC-system-dependent.c */; };
-		39BECE061680764F00FA5787 /* OSC-timetag.c in Sources */ = {isa = PBXBuildFile; fileRef = 39BECDF71680764F00FA5787 /* OSC-timetag.c */; };
-		39BECE071680764F00FA5787 /* README in Resources */ = {isa = PBXBuildFile; fileRef = 39BECDF91680764F00FA5787 /* README */; };
-		39BECE081680764F00FA5787 /* tags in Resources */ = {isa = PBXBuildFile; fileRef = 39BECDFA1680764F00FA5787 /* tags */; };
+		2CFB16E81799C0B900A35145 /* copyright in Resources */ = {isa = PBXBuildFile; fileRef = 2CFB16CC1799C0B900A35145 /* copyright */; };
+		2CFB16E91799C0B900A35145 /* NetworkReturnAddress.c in Sources */ = {isa = PBXBuildFile; fileRef = 2CFB16CD1799C0B900A35145 /* NetworkReturnAddress.c */; };
+		2CFB16EA1799C0B900A35145 /* OSC-address-space.c in Sources */ = {isa = PBXBuildFile; fileRef = 2CFB16D01799C0B900A35145 /* OSC-address-space.c */; };
+		2CFB16EB1799C0B900A35145 /* OSC-callbacklist.c in Sources */ = {isa = PBXBuildFile; fileRef = 2CFB16D21799C0B900A35145 /* OSC-callbacklist.c */; };
+		2CFB16EC1799C0B900A35145 /* OSC-client.c in Sources */ = {isa = PBXBuildFile; fileRef = 2CFB16D41799C0B900A35145 /* OSC-client.c */; };
+		2CFB16ED1799C0B900A35145 /* OSC-drop.c in Sources */ = {isa = PBXBuildFile; fileRef = 2CFB16D81799C0B900A35145 /* OSC-drop.c */; };
+		2CFB16EE1799C0B900A35145 /* OSC-pattern-match.c in Sources */ = {isa = PBXBuildFile; fileRef = 2CFB16DB1799C0B900A35145 /* OSC-pattern-match.c */; };
+		2CFB16EF1799C0B900A35145 /* OSC-priority-queue.c in Sources */ = {isa = PBXBuildFile; fileRef = 2CFB16DD1799C0B900A35145 /* OSC-priority-queue.c */; };
+		2CFB16F01799C0B900A35145 /* OSC-receive.c in Sources */ = {isa = PBXBuildFile; fileRef = 2CFB16DF1799C0B900A35145 /* OSC-receive.c */; };
+		2CFB16F11799C0B900A35145 /* OSC-string-help.c in Sources */ = {isa = PBXBuildFile; fileRef = 2CFB16E11799C0B900A35145 /* OSC-string-help.c */; };
+		2CFB16F21799C0B900A35145 /* OSC-system-dependent.c in Sources */ = {isa = PBXBuildFile; fileRef = 2CFB16E31799C0B900A35145 /* OSC-system-dependent.c */; };
+		2CFB16F31799C0B900A35145 /* OSC-timetag.c in Sources */ = {isa = PBXBuildFile; fileRef = 2CFB16E41799C0B900A35145 /* OSC-timetag.c */; };
+		2CFB16F41799C0B900A35145 /* README in Resources */ = {isa = PBXBuildFile; fileRef = 2CFB16E61799C0B900A35145 /* README */; };
+		2CFB16F51799C0B900A35145 /* tags in Resources */ = {isa = PBXBuildFile; fileRef = 2CFB16E71799C0B900A35145 /* tags */; };
+		2CFB16F81799C17000A35145 /* MainMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = 2CFB16F71799C17000A35145 /* MainMenu.nib */; };
 		39DD3E1E1680BCC9006F492A /* OSCInPort.m in Sources */ = {isa = PBXBuildFile; fileRef = 39DD3E1B1680BCC9006F492A /* OSCInPort.m */; };
 		39DD3E1F1680BCC9006F492A /* OSCPort.m in Sources */ = {isa = PBXBuildFile; fileRef = 39DD3E1D1680BCC9006F492A /* OSCPort.m */; };
 		39FA314A1680654100387450 /* WiiRemote.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39FA31491680654100387450 /* WiiRemote.framework */; };
@@ -58,7 +59,6 @@
 		53C576F90B24999B00D36527 /* GraphPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 53C576F80B24999B00D36527 /* GraphPoint.m */; };
 		53F79ADC0B261EBE00C74335 /* icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 53F79ADB0B261EBE00C74335 /* icon.icns */; };
 		53FA54E90B3AD41A003B73F3 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53FA54D40B3AD41A003B73F3 /* Carbon.framework */; };
-		8D11072A0486CEB800E47090 /* MainMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = 29B97318FDCFA39411CA2CEA /* MainMenu.nib */; };
 		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
@@ -84,42 +84,42 @@
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		13E42FB307B3F0F600E4EEF1 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = /System/Library/Frameworks/CoreData.framework; sourceTree = "<absolute>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		29B97319FDCFA39411CA2CEA /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/MainMenu.nib; sourceTree = "<group>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		2C7ECEA717998AF600C0E555 /* TODO.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = TODO.txt; sourceTree = "<group>"; };
 		2CFB16C51799921E00A35145 /* Functions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Functions.h; sourceTree = "<group>"; };
 		2CFB16C61799921E00A35145 /* Functions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Functions.m; sourceTree = "<group>"; };
 		2CFB16C81799927100A35145 /* Config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
+		2CFB16CC1799C0B900A35145 /* copyright */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = copyright; sourceTree = "<group>"; };
+		2CFB16CD1799C0B900A35145 /* NetworkReturnAddress.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = NetworkReturnAddress.c; sourceTree = "<group>"; };
+		2CFB16CE1799C0B900A35145 /* NetworkReturnAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkReturnAddress.h; sourceTree = "<group>"; };
+		2CFB16CF1799C0B900A35145 /* NetworkUDP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkUDP.h; sourceTree = "<group>"; };
+		2CFB16D01799C0B900A35145 /* OSC-address-space.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "OSC-address-space.c"; sourceTree = "<group>"; };
+		2CFB16D11799C0B900A35145 /* OSC-address-space.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OSC-address-space.h"; sourceTree = "<group>"; };
+		2CFB16D21799C0B900A35145 /* OSC-callbacklist.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "OSC-callbacklist.c"; sourceTree = "<group>"; };
+		2CFB16D31799C0B900A35145 /* OSC-callbacklist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OSC-callbacklist.h"; sourceTree = "<group>"; };
+		2CFB16D41799C0B900A35145 /* OSC-client.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "OSC-client.c"; sourceTree = "<group>"; };
+		2CFB16D51799C0B900A35145 /* OSC-client.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OSC-client.h"; sourceTree = "<group>"; };
+		2CFB16D61799C0B900A35145 /* OSC-common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OSC-common.h"; sourceTree = "<group>"; };
+		2CFB16D71799C0B900A35145 /* OSC-dispatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OSC-dispatch.h"; sourceTree = "<group>"; };
+		2CFB16D81799C0B900A35145 /* OSC-drop.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "OSC-drop.c"; sourceTree = "<group>"; };
+		2CFB16D91799C0B900A35145 /* OSC-drop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OSC-drop.h"; sourceTree = "<group>"; };
+		2CFB16DA1799C0B900A35145 /* OSC-internal-messages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OSC-internal-messages.h"; sourceTree = "<group>"; };
+		2CFB16DB1799C0B900A35145 /* OSC-pattern-match.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "OSC-pattern-match.c"; sourceTree = "<group>"; };
+		2CFB16DC1799C0B900A35145 /* OSC-pattern-match.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OSC-pattern-match.h"; sourceTree = "<group>"; };
+		2CFB16DD1799C0B900A35145 /* OSC-priority-queue.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "OSC-priority-queue.c"; sourceTree = "<group>"; };
+		2CFB16DE1799C0B900A35145 /* OSC-priority-queue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OSC-priority-queue.h"; sourceTree = "<group>"; };
+		2CFB16DF1799C0B900A35145 /* OSC-receive.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "OSC-receive.c"; sourceTree = "<group>"; };
+		2CFB16E01799C0B900A35145 /* OSC-receive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OSC-receive.h"; sourceTree = "<group>"; };
+		2CFB16E11799C0B900A35145 /* OSC-string-help.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "OSC-string-help.c"; sourceTree = "<group>"; };
+		2CFB16E21799C0B900A35145 /* OSC-string-help.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OSC-string-help.h"; sourceTree = "<group>"; };
+		2CFB16E31799C0B900A35145 /* OSC-system-dependent.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "OSC-system-dependent.c"; sourceTree = "<group>"; };
+		2CFB16E41799C0B900A35145 /* OSC-timetag.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "OSC-timetag.c"; sourceTree = "<group>"; };
+		2CFB16E51799C0B900A35145 /* OSC-timetag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OSC-timetag.h"; sourceTree = "<group>"; };
+		2CFB16E61799C0B900A35145 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
+		2CFB16E71799C0B900A35145 /* tags */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = tags; sourceTree = "<group>"; };
+		2CFB16F71799C17000A35145 /* MainMenu.nib */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; path = MainMenu.nib; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* WiiRemote_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WiiRemote_Prefix.pch; sourceTree = "<group>"; };
-		39BECDDF1680764F00FA5787 /* copyright */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = copyright; sourceTree = "<group>"; };
-		39BECDE01680764F00FA5787 /* NetworkReturnAddress.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = NetworkReturnAddress.c; sourceTree = "<group>"; };
-		39BECDE11680764F00FA5787 /* NetworkReturnAddress.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkReturnAddress.h; sourceTree = "<group>"; };
-		39BECDE21680764F00FA5787 /* NetworkUDP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NetworkUDP.h; sourceTree = "<group>"; };
-		39BECDE31680764F00FA5787 /* OSC-address-space.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "OSC-address-space.c"; sourceTree = "<group>"; };
-		39BECDE41680764F00FA5787 /* OSC-address-space.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OSC-address-space.h"; sourceTree = "<group>"; };
-		39BECDE51680764F00FA5787 /* OSC-callbacklist.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "OSC-callbacklist.c"; sourceTree = "<group>"; };
-		39BECDE61680764F00FA5787 /* OSC-callbacklist.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OSC-callbacklist.h"; sourceTree = "<group>"; };
-		39BECDE71680764F00FA5787 /* OSC-client.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "OSC-client.c"; sourceTree = "<group>"; };
-		39BECDE81680764F00FA5787 /* OSC-client.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OSC-client.h"; sourceTree = "<group>"; };
-		39BECDE91680764F00FA5787 /* OSC-common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OSC-common.h"; sourceTree = "<group>"; };
-		39BECDEA1680764F00FA5787 /* OSC-dispatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OSC-dispatch.h"; sourceTree = "<group>"; };
-		39BECDEB1680764F00FA5787 /* OSC-drop.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "OSC-drop.c"; sourceTree = "<group>"; };
-		39BECDEC1680764F00FA5787 /* OSC-drop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OSC-drop.h"; sourceTree = "<group>"; };
-		39BECDED1680764F00FA5787 /* OSC-internal-messages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OSC-internal-messages.h"; sourceTree = "<group>"; };
-		39BECDEE1680764F00FA5787 /* OSC-pattern-match.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "OSC-pattern-match.c"; sourceTree = "<group>"; };
-		39BECDEF1680764F00FA5787 /* OSC-pattern-match.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OSC-pattern-match.h"; sourceTree = "<group>"; };
-		39BECDF01680764F00FA5787 /* OSC-priority-queue.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "OSC-priority-queue.c"; sourceTree = "<group>"; };
-		39BECDF11680764F00FA5787 /* OSC-priority-queue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OSC-priority-queue.h"; sourceTree = "<group>"; };
-		39BECDF21680764F00FA5787 /* OSC-receive.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "OSC-receive.c"; sourceTree = "<group>"; };
-		39BECDF31680764F00FA5787 /* OSC-receive.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OSC-receive.h"; sourceTree = "<group>"; };
-		39BECDF41680764F00FA5787 /* OSC-string-help.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "OSC-string-help.c"; sourceTree = "<group>"; };
-		39BECDF51680764F00FA5787 /* OSC-string-help.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OSC-string-help.h"; sourceTree = "<group>"; };
-		39BECDF61680764F00FA5787 /* OSC-system-dependent.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "OSC-system-dependent.c"; sourceTree = "<group>"; };
-		39BECDF71680764F00FA5787 /* OSC-timetag.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = "OSC-timetag.c"; sourceTree = "<group>"; };
-		39BECDF81680764F00FA5787 /* OSC-timetag.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OSC-timetag.h"; sourceTree = "<group>"; };
-		39BECDF91680764F00FA5787 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
-		39BECDFA1680764F00FA5787 /* tags */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = tags; sourceTree = "<group>"; };
 		39DD3E1A1680BCC9006F492A /* OSCInPort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSCInPort.h; sourceTree = "<group>"; };
 		39DD3E1B1680BCC9006F492A /* OSCInPort.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSCInPort.m; sourceTree = "<group>"; };
 		39DD3E1C1680BCC9006F492A /* OSCPort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSCPort.h; sourceTree = "<group>"; };
@@ -226,13 +226,14 @@
 		29B97314FDCFA39411CA2CEA /* WiiRemote */ = {
 			isa = PBXGroup;
 			children = (
+				2CFB16CA1799C0B800A35145 /* Lib */,
 				2CFB16C41799921E00A35145 /* Utils */,
 				39FA314B1680656E00387450 /* WiiRemote.framework */,
 				2C7ECEA817998E0000C0E555 /* Quartz */,
 				536851CB0B33087B00A38BE5 /* Models */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
-				53BDDEB90B2B22540033DB22 /* docs */,
+				53BDDEB90B2B22540033DB22 /* Docs */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
@@ -247,7 +248,6 @@
 				39DD3E1B1680BCC9006F492A /* OSCInPort.m */,
 				39DD3E1C1680BCC9006F492A /* OSCPort.h */,
 				39DD3E1D1680BCC9006F492A /* OSCPort.m */,
-				39BECDDE1680764F00FA5787 /* OSC-Kit-Mac */,
 				32CA4F630368D1EE00C91783 /* WiiRemote_Prefix.pch */,
 				29B97316FDCFA39411CA2CEA /* main.m */,
 			);
@@ -257,10 +257,10 @@
 		29B97317FDCFA39411CA2CEA /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				2CFB16F61799C17000A35145 /* Nibs */,
 				53F79ADB0B261EBE00C74335 /* icon.icns */,
 				8D1107310486CEB800E47090 /* Info.plist */,
 				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
-				29B97318FDCFA39411CA2CEA /* MainMenu.nib */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -295,39 +295,56 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
-		39BECDDE1680764F00FA5787 /* OSC-Kit-Mac */ = {
+		2CFB16CA1799C0B800A35145 /* Lib */ = {
 			isa = PBXGroup;
 			children = (
-				39BECDDF1680764F00FA5787 /* copyright */,
-				39BECDE01680764F00FA5787 /* NetworkReturnAddress.c */,
-				39BECDE11680764F00FA5787 /* NetworkReturnAddress.h */,
-				39BECDE21680764F00FA5787 /* NetworkUDP.h */,
-				39BECDE31680764F00FA5787 /* OSC-address-space.c */,
-				39BECDE41680764F00FA5787 /* OSC-address-space.h */,
-				39BECDE51680764F00FA5787 /* OSC-callbacklist.c */,
-				39BECDE61680764F00FA5787 /* OSC-callbacklist.h */,
-				39BECDE71680764F00FA5787 /* OSC-client.c */,
-				39BECDE81680764F00FA5787 /* OSC-client.h */,
-				39BECDE91680764F00FA5787 /* OSC-common.h */,
-				39BECDEA1680764F00FA5787 /* OSC-dispatch.h */,
-				39BECDEB1680764F00FA5787 /* OSC-drop.c */,
-				39BECDEC1680764F00FA5787 /* OSC-drop.h */,
-				39BECDED1680764F00FA5787 /* OSC-internal-messages.h */,
-				39BECDEE1680764F00FA5787 /* OSC-pattern-match.c */,
-				39BECDEF1680764F00FA5787 /* OSC-pattern-match.h */,
-				39BECDF01680764F00FA5787 /* OSC-priority-queue.c */,
-				39BECDF11680764F00FA5787 /* OSC-priority-queue.h */,
-				39BECDF21680764F00FA5787 /* OSC-receive.c */,
-				39BECDF31680764F00FA5787 /* OSC-receive.h */,
-				39BECDF41680764F00FA5787 /* OSC-string-help.c */,
-				39BECDF51680764F00FA5787 /* OSC-string-help.h */,
-				39BECDF61680764F00FA5787 /* OSC-system-dependent.c */,
-				39BECDF71680764F00FA5787 /* OSC-timetag.c */,
-				39BECDF81680764F00FA5787 /* OSC-timetag.h */,
-				39BECDF91680764F00FA5787 /* README */,
-				39BECDFA1680764F00FA5787 /* tags */,
+				2CFB16CB1799C0B900A35145 /* OSC-Kit-Mac */,
+			);
+			path = Lib;
+			sourceTree = "<group>";
+		};
+		2CFB16CB1799C0B900A35145 /* OSC-Kit-Mac */ = {
+			isa = PBXGroup;
+			children = (
+				2CFB16CC1799C0B900A35145 /* copyright */,
+				2CFB16CD1799C0B900A35145 /* NetworkReturnAddress.c */,
+				2CFB16CE1799C0B900A35145 /* NetworkReturnAddress.h */,
+				2CFB16CF1799C0B900A35145 /* NetworkUDP.h */,
+				2CFB16D01799C0B900A35145 /* OSC-address-space.c */,
+				2CFB16D11799C0B900A35145 /* OSC-address-space.h */,
+				2CFB16D21799C0B900A35145 /* OSC-callbacklist.c */,
+				2CFB16D31799C0B900A35145 /* OSC-callbacklist.h */,
+				2CFB16D41799C0B900A35145 /* OSC-client.c */,
+				2CFB16D51799C0B900A35145 /* OSC-client.h */,
+				2CFB16D61799C0B900A35145 /* OSC-common.h */,
+				2CFB16D71799C0B900A35145 /* OSC-dispatch.h */,
+				2CFB16D81799C0B900A35145 /* OSC-drop.c */,
+				2CFB16D91799C0B900A35145 /* OSC-drop.h */,
+				2CFB16DA1799C0B900A35145 /* OSC-internal-messages.h */,
+				2CFB16DB1799C0B900A35145 /* OSC-pattern-match.c */,
+				2CFB16DC1799C0B900A35145 /* OSC-pattern-match.h */,
+				2CFB16DD1799C0B900A35145 /* OSC-priority-queue.c */,
+				2CFB16DE1799C0B900A35145 /* OSC-priority-queue.h */,
+				2CFB16DF1799C0B900A35145 /* OSC-receive.c */,
+				2CFB16E01799C0B900A35145 /* OSC-receive.h */,
+				2CFB16E11799C0B900A35145 /* OSC-string-help.c */,
+				2CFB16E21799C0B900A35145 /* OSC-string-help.h */,
+				2CFB16E31799C0B900A35145 /* OSC-system-dependent.c */,
+				2CFB16E41799C0B900A35145 /* OSC-timetag.c */,
+				2CFB16E51799C0B900A35145 /* OSC-timetag.h */,
+				2CFB16E61799C0B900A35145 /* README */,
+				2CFB16E71799C0B900A35145 /* tags */,
 			);
 			path = "OSC-Kit-Mac";
+			sourceTree = "<group>";
+		};
+		2CFB16F61799C17000A35145 /* Nibs */ = {
+			isa = PBXGroup;
+			children = (
+				2CFB16F71799C17000A35145 /* MainMenu.nib */,
+			);
+			name = Nibs;
+			path = Resources/Nibs;
 			sourceTree = "<group>";
 		};
 		536851CB0B33087B00A38BE5 /* Models */ = {
@@ -344,14 +361,14 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
-		53BDDEB90B2B22540033DB22 /* docs */ = {
+		53BDDEB90B2B22540033DB22 /* Docs */ = {
 			isa = PBXGroup;
 			children = (
 				53BDDEBA0B2B22710033DB22 /* COPYRIGHT.txt */,
 				53BDDEBC0B2B229B0033DB22 /* HISTORY.txt */,
 				2C7ECEA717998AF600C0E555 /* TODO.txt */,
 			);
-			name = docs;
+			name = Docs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -406,7 +423,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8D11072A0486CEB800E47090 /* MainMenu.nib in Resources */,
 				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
 				53F79ADC0B261EBE00C74335 /* icon.icns in Resources */,
 				53BDDEBB0B2B22710033DB22 /* COPYRIGHT.txt in Resources */,
@@ -415,9 +431,10 @@
 				47653BE20B6EF35900F7DFEA /* Wiimote Buttons.qtz in Resources */,
 				471444FC0B8BD980009B5DD7 /* IR Data.qtz in Resources */,
 				47DE87EF0D022E2F00DA8840 /* Classic Controller.qtz in Resources */,
-				39BECDFB1680764F00FA5787 /* copyright in Resources */,
-				39BECE071680764F00FA5787 /* README in Resources */,
-				39BECE081680764F00FA5787 /* tags in Resources */,
+				2CFB16E81799C0B900A35145 /* copyright in Resources */,
+				2CFB16F41799C0B900A35145 /* README in Resources */,
+				2CFB16F51799C0B900A35145 /* tags in Resources */,
+				2CFB16F81799C17000A35145 /* MainMenu.nib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -456,20 +473,20 @@
 				535197AE0B39657F007184B2 /* WidgetsEnableTransformer2.m in Sources */,
 				5335B3480B3C73F800B21C9A /* PreferenceWindow.m in Sources */,
 				9E65733310EB2550001AE02D /* GridView.m in Sources */,
-				39BECDFC1680764F00FA5787 /* NetworkReturnAddress.c in Sources */,
-				39BECDFD1680764F00FA5787 /* OSC-address-space.c in Sources */,
-				39BECDFE1680764F00FA5787 /* OSC-callbacklist.c in Sources */,
-				39BECDFF1680764F00FA5787 /* OSC-client.c in Sources */,
-				39BECE001680764F00FA5787 /* OSC-drop.c in Sources */,
-				39BECE011680764F00FA5787 /* OSC-pattern-match.c in Sources */,
-				39BECE021680764F00FA5787 /* OSC-priority-queue.c in Sources */,
-				39BECE031680764F00FA5787 /* OSC-receive.c in Sources */,
-				39BECE041680764F00FA5787 /* OSC-string-help.c in Sources */,
-				39BECE051680764F00FA5787 /* OSC-system-dependent.c in Sources */,
-				39BECE061680764F00FA5787 /* OSC-timetag.c in Sources */,
 				39DD3E1E1680BCC9006F492A /* OSCInPort.m in Sources */,
 				39DD3E1F1680BCC9006F492A /* OSCPort.m in Sources */,
 				2CFB16C71799921E00A35145 /* Functions.m in Sources */,
+				2CFB16E91799C0B900A35145 /* NetworkReturnAddress.c in Sources */,
+				2CFB16EA1799C0B900A35145 /* OSC-address-space.c in Sources */,
+				2CFB16EB1799C0B900A35145 /* OSC-callbacklist.c in Sources */,
+				2CFB16EC1799C0B900A35145 /* OSC-client.c in Sources */,
+				2CFB16ED1799C0B900A35145 /* OSC-drop.c in Sources */,
+				2CFB16EE1799C0B900A35145 /* OSC-pattern-match.c in Sources */,
+				2CFB16EF1799C0B900A35145 /* OSC-priority-queue.c in Sources */,
+				2CFB16F01799C0B900A35145 /* OSC-receive.c in Sources */,
+				2CFB16F11799C0B900A35145 /* OSC-string-help.c in Sources */,
+				2CFB16F21799C0B900A35145 /* OSC-system-dependent.c in Sources */,
+				2CFB16F31799C0B900A35145 /* OSC-timetag.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -482,14 +499,6 @@
 				089C165DFE840E0CC02AAC07 /* English */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		29B97318FDCFA39411CA2CEA /* MainMenu.nib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				29B97319FDCFA39411CA2CEA /* English */,
-			);
-			name = MainMenu.nib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
