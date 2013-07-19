@@ -1238,12 +1238,18 @@ void SetLED(void *context, int arglen, const void *args,
 - (void) analogButtonChanged:(WiiButtonType) type amount:(unsigned short) press {
     
 	switch (type) {
-		case WiiClassicControllerLButton:
+		case WiiClassicControllerLButton: {
 			[ccAnalogL setStringValue:[NSString stringWithFormat:@"%00X", press]];
+        }
             break;
             
-		case WiiClassicControllerRButton:
+		case WiiClassicControllerRButton: {
 			[ccAnalogR setStringValue:[NSString stringWithFormat:@"%00X", press]];
+        }
+            break;
+            
+        default: {
+        }
             break;
 	}
 }
@@ -1835,21 +1841,20 @@ void SetLED(void *context, int arglen, const void *args,
 
 - (void)sendKeyboardEvent:(CGKeyCode)keyCode keyDown:(BOOL)keyDown
 {
-//	CFRelease(CGEventCreate(NULL));
-//	CGEventRef event = CGEventCreateKeyboardEvent(NULL, keyCode, keyDown);
-//	CGEventPost(kCGHIDEventTap, event);
-//	CFRelease(event);
+	CFRelease(CGEventCreate(NULL));
+	CGEventRef event = CGEventCreateKeyboardEvent(NULL, keyCode, keyDown);
+	CGEventPost(kCGHIDEventTap, event);
+	CFRelease(event);
 
     // Send system-wide event that e.g. snes9x can see (accessibility API)
-
-    AXUIElementRef axSystemWideElement = AXUIElementCreateSystemWide();
-    AXError error = AXUIElementPostKeyboardEvent(axSystemWideElement, 0, keyCode, keyDown);
-    
-    if (error != kAXErrorSuccess) {
-        LOG(@"Keyboard post error: %d", error);
-    }
-    
-    CFRelease(axSystemWideElement);
+//    AXUIElementRef axSystemWideElement = AXUIElementCreateSystemWide();
+//    AXError error = AXUIElementPostKeyboardEvent(axSystemWideElement, 0, keyCode, keyDown);
+//    
+//    if (error != kAXErrorSuccess) {
+//        LOG(@"Keyboard post error: %d", error);
+//    }
+//    
+//    CFRelease(axSystemWideElement);
 	
 	usleep(10000);
 }

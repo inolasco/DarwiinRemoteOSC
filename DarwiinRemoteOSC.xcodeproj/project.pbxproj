@@ -155,7 +155,7 @@
 		53F79ADB0B261EBE00C74335 /* icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = icon.icns; sourceTree = "<group>"; };
 		53FA54D40B3AD41A003B73F3 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		8D1107320486CEB800E47090 /* DarwiinRemoteOSC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DarwiinRemoteOSC.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D1107320486CEB800E47090 /* Darwiin Remote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Darwiin Remote.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E65733110EB2550001AE02D /* GridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GridView.h; sourceTree = "<group>"; };
 		9E65733210EB2550001AE02D /* GridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GridView.m; sourceTree = "<group>"; };
 		9EC9170310E9438A00CC575F /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = /System/Library/Frameworks/Quartz.framework; sourceTree = "<absolute>"; };
@@ -221,7 +221,7 @@
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8D1107320486CEB800E47090 /* DarwiinRemoteOSC.app */,
+				8D1107320486CEB800E47090 /* Darwiin Remote.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -378,9 +378,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		8D1107260486CEB800E47090 /* DarwiinRemoteOSC */ = {
+		8D1107260486CEB800E47090 /* Darwiin Remote */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "DarwiinRemoteOSC" */;
+			buildConfigurationList = C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "Darwiin Remote" */;
 			buildPhases = (
 				8D1107290486CEB800E47090 /* Resources */,
 				8D11072C0486CEB800E47090 /* Sources */,
@@ -391,10 +391,10 @@
 			);
 			dependencies = (
 			);
-			name = DarwiinRemoteOSC;
+			name = "Darwiin Remote";
 			productInstallPath = "$(HOME)/Applications";
 			productName = WiiRemote;
-			productReference = 8D1107320486CEB800E47090 /* DarwiinRemoteOSC.app */;
+			productReference = 8D1107320486CEB800E47090 /* Darwiin Remote.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -416,7 +416,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8D1107260486CEB800E47090 /* DarwiinRemoteOSC */,
+				8D1107260486CEB800E47090 /* Darwiin Remote */,
 				9EC9174A10E94AB200CC575F /* DarwiinRemoteOSC.dmg */,
 			);
 		};
@@ -573,7 +573,7 @@
 				GCC_PREFIX_HEADER = WiiRemote_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
-				PRODUCT_NAME = DarwiinRemoteOSC;
+				PRODUCT_NAME = "Darwiin Remote";
 				SDKROOT = macosx;
 				VALID_ARCHS = x86_64;
 				WRAPPER_EXTENSION = app;
@@ -618,7 +618,7 @@
 				GCC_PREFIX_HEADER = WiiRemote_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
-				PRODUCT_NAME = DarwiinRemoteOSC;
+				PRODUCT_NAME = "Darwiin Remote";
 				SDKROOT = macosx;
 				VALID_ARCHS = x86_64;
 				WRAPPER_EXTENSION = app;
@@ -659,7 +659,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "DarwiinRemoteOSC" */ = {
+		C01FCF4A08A954540054247B /* Build configuration list for PBXNativeTarget "Darwiin Remote" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C01FCF4B08A954540054247B /* Debug */,
