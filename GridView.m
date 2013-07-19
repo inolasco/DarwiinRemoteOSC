@@ -156,7 +156,7 @@
 	}
 	
 	/* Get rid of the old values */
-	while( [data count] && ![self shouldDraw:[[data objectAtIndex:0] timeValue] now:tval]){
+	while( [data count] && ![self shouldDraw:[data[0] timeValue] now:tval]){
 		[data removeObjectAtIndex: 0];
 	}
 	
@@ -166,7 +166,7 @@
 	{
 		int i;
 		for (i = 0; i < [data count]; i++){
-			GraphPoint* p = [data objectAtIndex:i];
+			GraphPoint* p = data[i];
 			float x = [p getX] / scale;
 			float y = [p getY] / scale;
 			

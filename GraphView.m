@@ -139,7 +139,7 @@
 		_freshGrid = FALSE;
 	}
 	
-	while( [datax count] && [datay count] && [dataz count] && ![self shouldDraw:[[datax objectAtIndex:0] timeValue] now:tval]){
+	while( [datax count] && [datay count] && [dataz count] && ![self shouldDraw:[datax[0] timeValue] now:tval]){
 		[datax removeObjectAtIndex: 0];
 		[datay removeObjectAtIndex: 0];
 		[dataz removeObjectAtIndex: 0];
@@ -157,7 +157,7 @@
 		int i;
 		glColor4f(1.0, 0.0, 0.0, 1.0);			//red
 		for (i = 0; i < [datax count]; i++){
-			GraphPoint* p = [datax objectAtIndex:i];
+			GraphPoint* p = datax[i];
 			float y = [p value] / scale;
 			float x = [self timeDif:[p timeValue] subtract:tval]/5 + 1.0;
 			glVertex2f(x, y);
@@ -170,7 +170,7 @@
 		int i;
 		glColor4f(0.0, 1.0, 0.0, 1.0);			//green
 		for (i = 0; i < [datay count]; i++){
-			GraphPoint* p = [datay objectAtIndex:i];
+			GraphPoint* p = datay[i];
 			float y = [p value] / scale;
 			float x = [self timeDif:[p timeValue] subtract:tval]/5 + 1.0;
 			glVertex2f(x, y);
@@ -183,7 +183,7 @@
 		int i;
 		glColor4f(0.0, 0.0, 1.0, 1.0);			//blue
 		for (i = 0; i < [dataz count]; i++){
-			GraphPoint* p = [dataz objectAtIndex:i];
+			GraphPoint* p = dataz[i];
 			float y = [p value] / scale;
 			float x = [self timeDif:[p timeValue] subtract:tval]/5 + 1.0;
 			glVertex2f(x, y);

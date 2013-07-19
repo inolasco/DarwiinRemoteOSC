@@ -146,13 +146,13 @@ static CGKeyCode GTMKeyCodeForCharCode(CGCharCode charCode) {
 	y0 = (y1 + y3) / 2.0;
 	z0 = (z2 + z3) / 2.0;
 	
-	[config setValue:[NSNumber numberWithInt:(int)x0] forKeyPath:@"wiimote.accX_zero"];
-	[config setValue:[NSNumber numberWithInt:(int)y0] forKeyPath:@"wiimote.accY_zero"];
-	[config setValue:[NSNumber numberWithInt:(int)z0] forKeyPath:@"wiimote.accZ_zero"];
+	[config setValue:@((int)x0) forKeyPath:@"wiimote.accX_zero"];
+	[config setValue:@((int)y0) forKeyPath:@"wiimote.accY_zero"];
+	[config setValue:@((int)z0) forKeyPath:@"wiimote.accZ_zero"];
 
-	[config setValue:[NSNumber numberWithInt:(int)x3] forKeyPath:@"wiimote.accX_1g"];
-	[config setValue:[NSNumber numberWithInt:(int)y2] forKeyPath:@"wiimote.accY_1g"];
-	[config setValue:[NSNumber numberWithInt:(int)z1] forKeyPath:@"wiimote.accZ_1g"];
+	[config setValue:@((int)x3) forKeyPath:@"wiimote.accX_1g"];
+	[config setValue:@((int)y2) forKeyPath:@"wiimote.accY_1g"];
+	[config setValue:@((int)z1) forKeyPath:@"wiimote.accZ_1g"];
 
 	
 	[textView setString:[NSString stringWithFormat:@"%@\n===== x: %d  y: %d  z: %d =====", [textView string], tmpAccX, tmpAccY, tmpAccZ]];
@@ -339,7 +339,7 @@ void SetLED(void *context, int arglen, const void *args,
 	[portIn newMethodNamed: "led" under: wiiContainer callback:SetLED context: self];
 	[portIn start];
     
-	modes = [[NSArray arrayWithObjects:@"Nothing", @"Key", @"\tReturn", @"\tTab", @"\tEsc", @"\tBackspace", @"\tUp", @"\tDown", @"\tLeft",@"\tRight", @"\tPage Up", @"\tPage Down", @"\tF1", @"\tF2", @"\tF3", @"\tF4", @"\tF5", @"\tF6", @"\tF7", @"\tF8", @"\tF9", @"\tF10", @"\tF11", @"\tF12", @"Left Click", @"Left Click2", @"Right Click", @"Right Click2", @"Toggle Mouse (Motion)", @"Toggle Mouse (IR)",nil] retain];
+	modes = [@[@"Nothing", @"Key", @"\tReturn", @"\tTab", @"\tEsc", @"\tBackspace", @"\tUp", @"\tDown", @"\tLeft",@"\tRight", @"\tPage Up", @"\tPage Down", @"\tF1", @"\tF2", @"\tF3", @"\tF4", @"\tF5", @"\tF6", @"\tF7", @"\tF8", @"\tF9", @"\tF10", @"\tF11", @"\tF12", @"Left Click", @"Left Click2", @"Right Click", @"Right Click2", @"Toggle Mouse (Motion)", @"Toggle Mouse (IR)"] retain];
 
 	
 	id transformer = [[[WidgetsEnableTransformer alloc] init] autorelease];
@@ -352,7 +352,7 @@ void SetLED(void *context, int arglen, const void *args,
 	[NSValueTransformer setValueTransformer:transformer3 forName:@"WidgetsEnableTransformer2"];
 
 	NSSortDescriptor* descriptor = [[[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES] autorelease];
-	configSortDescriptors = [[NSArray arrayWithObjects:descriptor, nil] retain];
+	configSortDescriptors = [@[descriptor] retain];
 	return self;
 }
 
@@ -640,13 +640,13 @@ void SetLED(void *context, int arglen, const void *args,
 			float scaledY = ((irData[0].y / 768.0) * 1.5) - 0.75;
 			float scaledSize = irData[0].s / 16.0;
 			
-			[irQCView setValue:[NSNumber numberWithFloat: scaledX] forInputKey:[NSString stringWithString:@"Point1X"]];
-			[irQCView setValue:[NSNumber numberWithFloat: scaledY] forInputKey:[NSString stringWithString:@"Point1Y"]];
-			[irQCView setValue:[NSNumber numberWithFloat: scaledSize] forInputKey:[NSString stringWithString:@"Point1Size"]];
+			[irQCView setValue:@(scaledX) forInputKey:[NSString stringWithString:@"Point1X"]];
+			[irQCView setValue:@(scaledY) forInputKey:[NSString stringWithString:@"Point1Y"]];
+			[irQCView setValue:@(scaledSize) forInputKey:[NSString stringWithString:@"Point1Size"]];
 
-			[irQCView setValue:[NSNumber numberWithBool: YES] forInputKey:[NSString stringWithString:@"Point1Enable"]];		
+			[irQCView setValue:@YES forInputKey:[NSString stringWithString:@"Point1Enable"]];		
 		} else {
-			[irQCView setValue:[NSNumber numberWithBool: NO] forInputKey:[NSString stringWithString:@"Point1Enable"]];		
+			[irQCView setValue:@NO forInputKey:[NSString stringWithString:@"Point1Enable"]];		
 		}
 
 		if (irData[1].s != 0xF) {
@@ -654,13 +654,13 @@ void SetLED(void *context, int arglen, const void *args,
 			float scaledY = ((irData[1].y / 768.0) * 1.5) - 0.75;
 			float scaledSize = irData[1].s / 16.0;
 			
-			[irQCView setValue:[NSNumber numberWithFloat: scaledX] forInputKey:[NSString stringWithString:@"Point2X"]];
-			[irQCView setValue:[NSNumber numberWithFloat: scaledY] forInputKey:[NSString stringWithString:@"Point2Y"]];
-			[irQCView setValue:[NSNumber numberWithFloat: scaledSize] forInputKey:[NSString stringWithString:@"Point2Size"]];
+			[irQCView setValue:@(scaledX) forInputKey:[NSString stringWithString:@"Point2X"]];
+			[irQCView setValue:@(scaledY) forInputKey:[NSString stringWithString:@"Point2Y"]];
+			[irQCView setValue:@(scaledSize) forInputKey:[NSString stringWithString:@"Point2Size"]];
 
-			[irQCView setValue:[NSNumber numberWithBool: YES] forInputKey:[NSString stringWithString:@"Point2Enable"]];		
+			[irQCView setValue:@YES forInputKey:[NSString stringWithString:@"Point2Enable"]];		
 		} else {
-			[irQCView setValue:[NSNumber numberWithBool: NO] forInputKey:[NSString stringWithString:@"Point2Enable"]];		
+			[irQCView setValue:@NO forInputKey:[NSString stringWithString:@"Point2Enable"]];		
 		}
 
 		if (irData[2].s != 0xF) {
@@ -668,26 +668,26 @@ void SetLED(void *context, int arglen, const void *args,
 			float scaledY = ((irData[2].y / 768.0) * 1.5) - 0.75;
 			float scaledSize = irData[2].s / 16.0;
 			
-			[irQCView setValue:[NSNumber numberWithFloat: scaledX] forInputKey:[NSString stringWithString:@"Point3X"]];
-			[irQCView setValue:[NSNumber numberWithFloat: scaledY] forInputKey:[NSString stringWithString:@"Point3Y"]];
-			[irQCView setValue:[NSNumber numberWithFloat: scaledSize] forInputKey:[NSString stringWithString:@"Point3Size"]];
+			[irQCView setValue:@(scaledX) forInputKey:[NSString stringWithString:@"Point3X"]];
+			[irQCView setValue:@(scaledY) forInputKey:[NSString stringWithString:@"Point3Y"]];
+			[irQCView setValue:@(scaledSize) forInputKey:[NSString stringWithString:@"Point3Size"]];
 
-			[irQCView setValue:[NSNumber numberWithBool: YES] forInputKey:[NSString stringWithString:@"Point3Enable"]];		
+			[irQCView setValue:@YES forInputKey:[NSString stringWithString:@"Point3Enable"]];		
 		} else {
-			[irQCView setValue:[NSNumber numberWithBool: NO] forInputKey:[NSString stringWithString:@"Point3Enable"]];		
+			[irQCView setValue:@NO forInputKey:[NSString stringWithString:@"Point3Enable"]];		
 		}
 		if (irData[3].s != 0xF) {
 			float scaledX = ((irData[3].x / 1024.0) * 2.0) - 1.0;
 			float scaledY = ((irData[3].y / 768.0) * 1.5) - 0.75;
 			float scaledSize = irData[3].s / 16.0;
 			
-			[irQCView setValue:[NSNumber numberWithFloat: scaledX] forInputKey:[NSString stringWithString:@"Point4X"]];
-			[irQCView setValue:[NSNumber numberWithFloat: scaledY] forInputKey:[NSString stringWithString:@"Point4Y"]];
-			[irQCView setValue:[NSNumber numberWithFloat: scaledSize] forInputKey:[NSString stringWithString:@"Point4Size"]];
+			[irQCView setValue:@(scaledX) forInputKey:[NSString stringWithString:@"Point4X"]];
+			[irQCView setValue:@(scaledY) forInputKey:[NSString stringWithString:@"Point4Y"]];
+			[irQCView setValue:@(scaledSize) forInputKey:[NSString stringWithString:@"Point4Size"]];
 
-			[irQCView setValue:[NSNumber numberWithBool: YES] forInputKey:[NSString stringWithString:@"Point4Enable"]];		
+			[irQCView setValue:@YES forInputKey:[NSString stringWithString:@"Point4Enable"]];		
 		} else {
-			[irQCView setValue:[NSNumber numberWithBool: NO] forInputKey:[NSString stringWithString:@"Point4Enable"]];		
+			[irQCView setValue:@NO forInputKey:[NSString stringWithString:@"Point4Enable"]];		
 		}
 }
 
@@ -700,168 +700,168 @@ void SetLED(void *context, int arglen, const void *args,
 	if (type == WiiRemoteAButton){
 		map = [mappings valueForKeyPath:@"wiimote.a"];
 		[aButton setEnabled:isPressed];
-		[wiimoteQCView setValue:[NSNumber numberWithBool: isPressed] forInputKey:[NSString stringWithString:@"A_Button"]];
+		[wiimoteQCView setValue:@(isPressed) forInputKey:[NSString stringWithString:@"A_Button"]];
         [port sendTo:"/wii/button/a" types:"i", isPressedInt];
 		
 	}else if (type == WiiRemoteBButton){
 		map = [mappings valueForKeyPath:@"wiimote.b"];
 		[bButton setEnabled:isPressed];
-		[wiimoteQCView setValue:[NSNumber numberWithBool: isPressed] forInputKey:[NSString stringWithString:@"B_Button"]];
+		[wiimoteQCView setValue:@(isPressed) forInputKey:[NSString stringWithString:@"B_Button"]];
         [port sendTo:"/wii/button/b" types:"i", isPressedInt];
 
 	}else if (type == WiiRemoteUpButton){
 		map = [mappings valueForKeyPath:@"wiimote.up"];
 		[upButton setEnabled:isPressed];
-		[wiimoteQCView setValue:[NSNumber numberWithBool: isPressed] forInputKey:[NSString stringWithString:@"Up"]];
+		[wiimoteQCView setValue:@(isPressed) forInputKey:[NSString stringWithString:@"Up"]];
         [port sendTo:"/wii/button/up" types:"i", isPressedInt];
 
 	}else if (type == WiiRemoteDownButton){
 		map = [mappings valueForKeyPath:@"wiimote.down"];
 		[downButton setEnabled:isPressed];
-		[wiimoteQCView setValue:[NSNumber numberWithBool: isPressed] forInputKey:[NSString stringWithString:@"Down"]];
+		[wiimoteQCView setValue:@(isPressed) forInputKey:[NSString stringWithString:@"Down"]];
         [port sendTo:"/wii/button/down" types:"i", isPressedInt];
 
 	}else if (type == WiiRemoteLeftButton){
 		map = [mappings valueForKeyPath:@"wiimote.left"];
 		[leftButton setEnabled:isPressed];
-		[wiimoteQCView setValue:[NSNumber numberWithBool: isPressed] forInputKey:[NSString stringWithString:@"Left"]];
+		[wiimoteQCView setValue:@(isPressed) forInputKey:[NSString stringWithString:@"Left"]];
         [port sendTo:"/wii/button/left" types:"i", isPressedInt];
 
 	}else if (type == WiiRemoteRightButton){
 		map = [mappings valueForKeyPath:@"wiimote.right"];
 		[rightButton setEnabled:isPressed];
-		[wiimoteQCView setValue:[NSNumber numberWithBool: isPressed] forInputKey:[NSString stringWithString:@"Right"]];
+		[wiimoteQCView setValue:@(isPressed) forInputKey:[NSString stringWithString:@"Right"]];
         [port sendTo:"/wii/button/right" types:"i", isPressedInt];
 
 	}else if (type == WiiRemoteMinusButton){
 		map = [mappings valueForKeyPath:@"wiimote.minus"];
 		[minusButton setEnabled:isPressed];
-		[wiimoteQCView setValue:[NSNumber numberWithBool: isPressed] forInputKey:[NSString stringWithString:@"Minus"]];
+		[wiimoteQCView setValue:@(isPressed) forInputKey:[NSString stringWithString:@"Minus"]];
         [port sendTo:"/wii/button/minus" types:"i", isPressedInt];
 
 	}else if (type == WiiRemotePlusButton){
 		map = [mappings valueForKeyPath:@"wiimote.plus"];
 		[plusButton setEnabled:isPressed];
-		[wiimoteQCView setValue:[NSNumber numberWithBool: isPressed] forInputKey:[NSString stringWithString:@"Plus"]];
+		[wiimoteQCView setValue:@(isPressed) forInputKey:[NSString stringWithString:@"Plus"]];
         [port sendTo:"/wii/button/plus" types:"i", isPressedInt];
 
 	}else if (type == WiiRemoteHomeButton){
 		map = [mappings valueForKeyPath:@"wiimote.home"];
 		[homeButton setEnabled:isPressed];
-		[wiimoteQCView setValue:[NSNumber numberWithBool: isPressed] forInputKey:[NSString stringWithString:@"Home"]];
+		[wiimoteQCView setValue:@(isPressed) forInputKey:[NSString stringWithString:@"Home"]];
         [port sendTo:"/wii/button/home" types:"i", isPressedInt];
 
 	}else if (type == WiiRemoteOneButton){
 		map = [mappings valueForKeyPath:@"wiimote.one"];
 		[oneButton setEnabled:isPressed];
-		[wiimoteQCView setValue:[NSNumber numberWithBool: isPressed] forInputKey:[NSString stringWithString:@"One"]];
+		[wiimoteQCView setValue:@(isPressed) forInputKey:[NSString stringWithString:@"One"]];
         [port sendTo:"/wii/button/one" types:"i", isPressedInt];
 
 	}else if (type == WiiRemoteTwoButton){
 		map = [mappings valueForKeyPath:@"wiimote.two"];
 		[twoButton setEnabled:isPressed];
-		[wiimoteQCView setValue:[NSNumber numberWithBool: isPressed] forInputKey:[NSString stringWithString:@"Two"]];
+		[wiimoteQCView setValue:@(isPressed) forInputKey:[NSString stringWithString:@"Two"]];
         [port sendTo:"/wii/button/two" types:"i", isPressedInt];
 
 	}else if (type == WiiNunchukCButton){
 		map = [mappings valueForKeyPath:@"nunchuk.c"];
-		[joystickQCView setValue:[NSNumber numberWithBool: isPressed] forInputKey:[NSString stringWithString:@"CEnable"]];
+		[joystickQCView setValue:@(isPressed) forInputKey:[NSString stringWithString:@"CEnable"]];
         [port sendTo:"/nunchuk/button/c" types:"i", isPressedInt];
 
 	}else if (type == WiiNunchukZButton){
 		map = [mappings valueForKeyPath:@"nunchuk.z"];
-		[joystickQCView setValue:[NSNumber numberWithBool: isPressed] forInputKey:[NSString stringWithString:@"ZEnable"]];
+		[joystickQCView setValue:@(isPressed) forInputKey:[NSString stringWithString:@"ZEnable"]];
         [port sendTo:"/nunchuk/button/z" types:"i", isPressedInt];
 	} 
 	
 	switch (type) {
 		case WiiClassicControllerXButton:
 			map = [mappings valueForKeyPath:@"classiccontroller.x"];
-			[ccQCView setValue:[NSNumber numberWithBool: isPressed] forInputKey:[NSString stringWithString:@"X"]];
+			[ccQCView setValue:@(isPressed) forInputKey:[NSString stringWithString:@"X"]];
             [port sendTo:"/classic/button/x" types:"i", isPressedInt];
 		break;
 	
 		case WiiClassicControllerYButton:
 			map = [mappings valueForKeyPath:@"classiccontroller.y"];
-			[ccQCView setValue:[NSNumber numberWithBool: isPressed] forInputKey:[NSString stringWithString:@"Y"]];
+			[ccQCView setValue:@(isPressed) forInputKey:[NSString stringWithString:@"Y"]];
             [port sendTo:"/classic/button/y" types:"i", isPressedInt];
 		break;
 		
 		case WiiClassicControllerAButton:
 			map = [mappings valueForKeyPath:@"classiccontroller.a"];
-			[ccQCView setValue:[NSNumber numberWithBool: isPressed] forInputKey:[NSString stringWithString:@"A"]];
+			[ccQCView setValue:@(isPressed) forInputKey:[NSString stringWithString:@"A"]];
             [port sendTo:"/classic/button/a" types:"i", isPressedInt];
 		break;
 		
 		case WiiClassicControllerBButton:
 			map = [mappings valueForKeyPath:@"classiccontroller.b"];
-			[ccQCView setValue:[NSNumber numberWithBool: isPressed] forInputKey:[NSString stringWithString:@"B"]];
+			[ccQCView setValue:@(isPressed) forInputKey:[NSString stringWithString:@"B"]];
             [port sendTo:"/classic/button/b" types:"i", isPressedInt];
 		break;
 		
 		case WiiClassicControllerLButton:
 			map = [mappings valueForKeyPath:@"classiccontroller.l"];
-			[ccQCView setValue:[NSNumber numberWithBool: isPressed] forInputKey:[NSString stringWithString:@"L"]];
+			[ccQCView setValue:@(isPressed) forInputKey:[NSString stringWithString:@"L"]];
             [port sendTo:"/classic/button/l" types:"i", isPressedInt];
 		break;
 		
 		case WiiClassicControllerRButton:
 			map = [mappings valueForKeyPath:@"classiccontroller.r"];
-			[ccQCView setValue:[NSNumber numberWithBool: isPressed] forInputKey:[NSString stringWithString:@"R"]];
+			[ccQCView setValue:@(isPressed) forInputKey:[NSString stringWithString:@"R"]];
             [port sendTo:"/classic/button/r" types:"i", isPressedInt];
 		break;
 		
 		case WiiClassicControllerZLButton:
 			map = [mappings valueForKeyPath:@"classiccontroller.zl"];
-			[ccQCView setValue:[NSNumber numberWithBool: isPressed] forInputKey:[NSString stringWithString:@"ZL"]];
+			[ccQCView setValue:@(isPressed) forInputKey:[NSString stringWithString:@"ZL"]];
             [port sendTo:"/classic/button/zl" types:"i", isPressedInt];
 		break;
 
 		case WiiClassicControllerZRButton:
 			map = [mappings valueForKeyPath:@"classiccontroller.zr"];
-			[ccQCView setValue:[NSNumber numberWithBool: isPressed] forInputKey:[NSString stringWithString:@"ZR"]];
+			[ccQCView setValue:@(isPressed) forInputKey:[NSString stringWithString:@"ZR"]];
             [port sendTo:"/classic/button/zr" types:"i", isPressedInt];
 		break;
 
 		case WiiClassicControllerUpButton:
 			map = [mappings valueForKeyPath:@"classiccontroller.up"];
-			[ccQCView setValue:[NSNumber numberWithBool: isPressed] forInputKey:[NSString stringWithString:@"Up"]];
+			[ccQCView setValue:@(isPressed) forInputKey:[NSString stringWithString:@"Up"]];
             [port sendTo:"/classic/button/up" types:"i", isPressedInt];
 		break;
 
 		case WiiClassicControllerDownButton:
 			map = [mappings valueForKeyPath:@"classiccontroller.down"];
-			[ccQCView setValue:[NSNumber numberWithBool: isPressed] forInputKey:[NSString stringWithString:@"Down"]];
+			[ccQCView setValue:@(isPressed) forInputKey:[NSString stringWithString:@"Down"]];
             [port sendTo:"/classic/button/down" types:"i", isPressedInt];
 		break;
 
 		case WiiClassicControllerLeftButton:
 			map = [mappings valueForKeyPath:@"classiccontroller.left"];
-			[ccQCView setValue:[NSNumber numberWithBool: isPressed] forInputKey:[NSString stringWithString:@"Left"]];
+			[ccQCView setValue:@(isPressed) forInputKey:[NSString stringWithString:@"Left"]];
             [port sendTo:"/classic/button/left" types:"i", isPressedInt];
 		break;
 
 		case WiiClassicControllerRightButton:
 			map = [mappings valueForKeyPath:@"classiccontroller.right"];
-			[ccQCView setValue:[NSNumber numberWithBool: isPressed] forInputKey:[NSString stringWithString:@"Right"]];
+			[ccQCView setValue:@(isPressed) forInputKey:[NSString stringWithString:@"Right"]];
             [port sendTo:"/classic/button/right" types:"i", isPressedInt];
 		break;
 
 		case WiiClassicControllerMinusButton:
 			map = [mappings valueForKeyPath:@"classiccontroller.minus"];
-			[ccQCView setValue:[NSNumber numberWithBool: isPressed] forInputKey:[NSString stringWithString:@"Minus"]];
+			[ccQCView setValue:@(isPressed) forInputKey:[NSString stringWithString:@"Minus"]];
             [port sendTo:"/classic/button/minus" types:"i", isPressedInt];
 		break;
 
 		case WiiClassicControllerHomeButton:
 			map = [mappings valueForKeyPath:@"classiccontroller.home"];
-			[ccQCView setValue:[NSNumber numberWithBool: isPressed] forInputKey:[NSString stringWithString:@"Home"]];
+			[ccQCView setValue:@(isPressed) forInputKey:[NSString stringWithString:@"Home"]];
             [port sendTo:"/classic/button/home" types:"i", isPressedInt];
 		break;
 
 		case WiiClassicControllerPlusButton:
 			map = [mappings valueForKeyPath:@"classiccontroller.plus"];
-			[ccQCView setValue:[NSNumber numberWithBool: isPressed] forInputKey:[NSString stringWithString:@"Plus"]];
+			[ccQCView setValue:@(isPressed) forInputKey:[NSString stringWithString:@"Plus"]];
             [port sendTo:"/classic/button/plus" types:"i", isPressedInt];
 		break;
 	}
@@ -875,7 +875,7 @@ void SetLED(void *context, int arglen, const void *args,
 	point.x = p.x + p2.origin.x;
 	point.y = dispHeight - p.y - p2.origin.y;
 	
-	NSString* modeName = [modes objectAtIndex:[[map valueForKey:@"mode"] intValue] ];
+	NSString* modeName = modes[[[map valueForKey:@"mode"] intValue]];
 	//LOG(@"modeName: %@", modeName);
 	if ([modeName isEqualToString:@"Key"]){
 
@@ -1269,8 +1269,8 @@ void SetLED(void *context, int arglen, const void *args,
         [port sendTo:"/nunchuk/joystick" types:"ff", (float)scaledX,(float)scaledY];
         
 			// LOG(@"Joystick X = %f  Y= %f", scaledX, scaledY);
-			[joystickQCView setValue:[NSNumber numberWithFloat: scaledX] forInputKey:[NSString stringWithString:@"X_Position"]];
-			[joystickQCView setValue:[NSNumber numberWithFloat: scaledY] forInputKey:[NSString stringWithString:@"Y_Position"]];
+			[joystickQCView setValue:@(scaledX) forInputKey:[NSString stringWithString:@"X_Position"]];
+			[joystickQCView setValue:@(scaledY) forInputKey:[NSString stringWithString:@"Y_Position"]];
 		
 			[joystickX setStringValue: [NSString stringWithFormat:@"%00X", tiltX]];		
 			[joystickY setStringValue: [NSString stringWithFormat:@"%00X", tiltY]];		
@@ -2415,10 +2415,10 @@ void SetLED(void *context, int arglen, const void *args,
 	}
 	
 	NSString *addressInput = [theRemoteAddress stringValue];
-	NSNumber *portInput = [NSNumber numberWithInt:[theRemotePort intValue]];
+	NSNumber *portInput = @([theRemotePort intValue]);
 	int myRemotePort = [portInput intValue];
 	
-	NSNumber *portRcv = [NSNumber numberWithInt:[theRcvPort intValue]];
+	NSNumber *portRcv = @([theRcvPort intValue]);
 	short myRcvPort = [portRcv intValue];
     
 	const char *temp = [addressInput fileSystemRepresentation];
