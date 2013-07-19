@@ -86,6 +86,7 @@
 		29B97319FDCFA39411CA2CEA /* English */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; name = English; path = English.lproj/MainMenu.nib; sourceTree = "<group>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
+		2C7ECEA717998AF600C0E555 /* TODO.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = TODO.txt; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* WiiRemote_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WiiRemote_Prefix.pch; sourceTree = "<group>"; };
 		39BECDDF1680764F00FA5787 /* copyright */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = copyright; sourceTree = "<group>"; };
 		39BECDE01680764F00FA5787 /* NetworkReturnAddress.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = NetworkReturnAddress.c; sourceTree = "<group>"; };
@@ -147,7 +148,7 @@
 		53F79ADB0B261EBE00C74335 /* icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = icon.icns; sourceTree = "<group>"; };
 		53FA54D40B3AD41A003B73F3 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = /System/Library/Frameworks/Carbon.framework; sourceTree = "<absolute>"; };
 		8D1107310486CEB800E47090 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		8D1107320486CEB800E47090 /* DarwiinRemote.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DarwiinRemote.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8D1107320486CEB800E47090 /* DarwiinRemoteOSC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DarwiinRemoteOSC.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E65733110EB2550001AE02D /* GridView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GridView.h; sourceTree = "<group>"; };
 		9E65733210EB2550001AE02D /* GridView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GridView.m; sourceTree = "<group>"; };
 		9EC9170310E9438A00CC575F /* Quartz.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quartz.framework; path = /System/Library/Frameworks/Quartz.framework; sourceTree = "<absolute>"; };
@@ -213,7 +214,7 @@
 		19C28FACFE9D520D11CA2CBB /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8D1107320486CEB800E47090 /* DarwiinRemote.app */,
+				8D1107320486CEB800E47090 /* DarwiinRemoteOSC.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -325,6 +326,7 @@
 			children = (
 				53BDDEBA0B2B22710033DB22 /* COPYRIGHT.txt */,
 				53BDDEBC0B2B229B0033DB22 /* HISTORY.txt */,
+				2C7ECEA717998AF600C0E555 /* TODO.txt */,
 			);
 			name = docs;
 			sourceTree = "<group>";
@@ -348,7 +350,7 @@
 			name = DarwiinRemoteOSC;
 			productInstallPath = "$(HOME)/Applications";
 			productName = WiiRemote;
-			productReference = 8D1107320486CEB800E47090 /* DarwiinRemote.app */;
+			productReference = 8D1107320486CEB800E47090 /* DarwiinRemoteOSC.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */

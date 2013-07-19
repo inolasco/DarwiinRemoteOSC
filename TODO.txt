@@ -1,0 +1,6 @@
+TODO
+
+- Build and test
+- Update project settings (ONLY AFTER TESTING)
+- Update icon to higher resolution
+- Improve UI
