@@ -17,7 +17,7 @@
 	BOOL    _ownsSocket;
 }
 
-#pragma mark _____ instance creation
+#pragma mark - instance creation
 // ipAddress is a character string representing a numeric address in the standard
 // Internet . notation. *I don't do name lookup*
 + (id)oscPortToAddress:(const char*)ipAddress portNumber:(unsigned short)portNumber;
@@ -25,12 +25,12 @@
 // socket needs to be a socket connected to the server
 - (id)initWithSocket:(int)socket;
 
-#pragma mark _____ accessing
+#pragma mark - accessing
 - (int)socket;
 - (BOOL)isSocketOwner;
 - (void)setOwnsSocket:(BOOL)ownsSocket;
 
-#pragma mark _____ actions
+#pragma mark - actions
 // If you use a single OSCPort in multiple threads, you need
 // an NSLock/mutex around calls to these actions
 - (BOOL)loadSynthDef:(char*)synthDefFilename;

@@ -1,7 +1,9 @@
 TODO
 
 - Build and test
+- Fix issue with Mame OS X receiving input on menu, but not on games
 - Convert to ARC
+    - Replace void* context with protocols
 - Remove warnings
 - Update icon to higher resolution
 - Improve UI

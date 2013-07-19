@@ -196,7 +196,7 @@ static CGKeyCode GTMKeyCodeForCharCode(CGCharCode charCode) {
 	}
 }
 
-#pragma mark _____ OSC Callbacks
+#pragma mark - OSC Callbacks
 BOOL ReadOSCInts(int arglen, const void* args, int numInts, int* outInts, NSString* errorMessage)
 {
 	unsigned i;
@@ -887,6 +887,9 @@ void SetLED(void *context, int arglen, const void *args,
 	}else if ([modeName isEqualToString:@"\tReturn"]){
 		[self sendModifierKeys:map isPressed:isPressed];
 		
+        
+        // TODO: Build an enum with the meaning of these keycodes
+        
 		[self sendKeyboardEvent:36 keyDown:isPressed];
 		
 	}else if ([modeName isEqualToString:@"\tTab"]){
@@ -1834,11 +1837,25 @@ void SetLED(void *context, int arglen, const void *args,
 	CFRelease(CGEventCreate(NULL));
 	// this is Tiger's bug.
 	//see also: http://www.cocoabuilder.com/archive/message/cocoa/2006/10/4/172206
+    
+    
+    AXUIElementRef axSystemWideElement = AXUIElementCreateSystemWide();
+    AXError error = AXUIElementPostKeyboardEvent(axSystemWideElement, 0, keyCode, keyDown);
+    
+    if (error != kAXErrorSuccess) {
+        LOG(@"Keyboard post error: %d", error);
+    }
+    
+
+    
+    
+    CFRelease(axSystemWideElement);
 	
 	
-	CGEventRef event = CGEventCreateKeyboardEvent(NULL, keyCode, keyDown);
-	CGEventPost(kCGHIDEventTap, event);
-	CFRelease(event);
+//	CGEventRef event = CGEventCreateKeyboardEvent(NULL, keyCode, keyDown);
+//	CGEventPost(kCGHIDEventTap, event);
+//	CFRelease(event);
+    
 	usleep(10000);
 }
 
@@ -1849,8 +1866,6 @@ void SetLED(void *context, int arglen, const void *args,
 	NSManagedObjectContext * context  = [appDelegate managedObjectContext];
     
 	[context commitEditing];
-    
-    
     
 	[NSApp beginSheet:preferenceWindow
 	   modalForWindow:mainWindow

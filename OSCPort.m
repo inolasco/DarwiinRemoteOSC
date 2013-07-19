@@ -20,7 +20,7 @@
 
 @implementation OSCPort
 
-#pragma mark _____ superclass overrides
+#pragma mark - superclass overrides
 - (void)dealloc
 {
     free(_oscBuffer);
@@ -32,7 +32,7 @@
     [super dealloc];
 }
 
-#pragma mark _____ instance creation
+#pragma mark - instance creation
 + (id)oscPortToAddress:(const char*)ipAddress portNumber:(unsigned short)portNumber
 {
     struct	sockaddr_in serverAddress;
@@ -77,7 +77,7 @@
 
 - (void)setOwnsSocket:(BOOL)ownsSocket { _ownsSocket = ownsSocket; }
 
-#pragma mark _____ actions
+#pragma mark - actions
 - (BOOL)loadSynthDef:(char*)synthDefFilename
 {
     return [self sendTo:"/d_load" types:"s", synthDefFilename];
