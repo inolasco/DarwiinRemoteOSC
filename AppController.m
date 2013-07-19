@@ -222,7 +222,7 @@ BOOL ReadOSCInts(int arglen, const void* args, int numInts, int* outInts, NSStri
 	remainingArgs = OSCDataAfterAlignedString(args, args + arglen, &errorMsg);
 	if (!remainingArgs)
 	{
-		NSLog(@"Problem with OSC reading note off arguments");
+		LOG(@"Problem with OSC reading note off arguments");
 		return NO;
 	}
 	
@@ -280,7 +280,7 @@ void SetLED(void *context, int arglen, const void *args,
 
 
 -(void)sendBatteryLevel {
-	NSLog(@"sending batterylevel");
+	LOG(@"sending batterylevel");
 	[port sendTo:"/wii/batterylevel" types:"f", (float)[wii batteryLevel]];	
 }
 
@@ -303,7 +303,7 @@ void SetLED(void *context, int arglen, const void *args,
     NSInteger sndPort = [standardDefaults integerForKey:@"port"];
     NSInteger rcvPort = [standardDefaults integerForKey:@"rcv_port"];
     
-   //NSLog (@"aString argument: %@\nanInteger argument: %d", aString, anInteger);
+   //LOG (@"aString argument: %@\nanInteger argument: %d", aString, anInteger);
     
     
     // commandline arguments -> very ugly...
@@ -324,14 +324,14 @@ void SetLED(void *context, int arglen, const void *args,
     
 
 	// sending OSC port
-	NSLog(@"OSC connecting to %s:%hu...", address, portNumber);
+	LOG(@"OSC connecting to %s:%hu...", address, portNumber);
     port   = [OSCPort oscPortToAddress:address portNumber: portNumber];
 	[port retain];
 	[port sendTo:"/wii/connected" types:"i", 1];
     
 	
 	// receive OSC messages.
-    NSLog(@"OSC Receiving on port %hu...", RcvPortNumber);
+    LOG(@"OSC Receiving on port %hu...", RcvPortNumber);
 	portIn = [[OSCInPort alloc] initPort: RcvPortNumber];
 	OSCcontainer wiiContainer = [portIn newContainerNamed: "wii"];
 	[portIn newMethodNamed: "batterylevel" under: wiiContainer callback:GetBatteryLevel context: self];
@@ -494,10 +494,10 @@ void SetLED(void *context, int arglen, const void *args,
 	
 	if ([wii isExpansionPortAttached]){
 		[wii setExpansionPortEnabled:YES];
-		NSLog(@"** Expansion Port Enabled");
+		LOG(@"** Expansion Port Enabled");
 	} else {
 		[wii setExpansionPortEnabled:NO];
-		NSLog(@"** Expansion Port Disabled");
+		LOG(@"** Expansion Port Disabled");
 	}	
 }
 
@@ -876,7 +876,7 @@ void SetLED(void *context, int arglen, const void *args,
 	point.y = dispHeight - p.y - p2.origin.y;
 	
 	NSString* modeName = [modes objectAtIndex:[[map valueForKey:@"mode"] intValue] ];
-	//NSLog(@"modeName: %@", modeName);
+	//LOG(@"modeName: %@", modeName);
 	if ([modeName isEqualToString:@"Key"]){
 
 		[self sendModifierKeys:map isPressed:isPressed]; 
@@ -1268,7 +1268,7 @@ void SetLED(void *context, int arglen, const void *args,
         
         [port sendTo:"/nunchuk/joystick" types:"ff", (float)scaledX,(float)scaledY];
         
-			// NSLog(@"Joystick X = %f  Y= %f", scaledX, scaledY);
+			// LOG(@"Joystick X = %f  Y= %f", scaledX, scaledY);
 			[joystickQCView setValue:[NSNumber numberWithFloat: scaledX] forInputKey:[NSString stringWithString:@"X_Position"]];
 			[joystickQCView setValue:[NSNumber numberWithFloat: scaledY] forInputKey:[NSString stringWithString:@"Y_Position"]];
 		
@@ -1377,8 +1377,8 @@ void SetLED(void *context, int arglen, const void *args,
 		deadLevelLR = (deadLevelLR < 15)?15:deadLevelLR;
 		deadLevelTB = (deadLevelTB < 15)?15:deadLevelTB;
 
-		NSLog(@"%f", deadLevelLR);
-		NSLog(@"%f", deadLevelTB);
+		LOG(@"%f", deadLevelLR);
+		LOG(@"%f", deadLevelTB);
 
 		static BOOL leftActive = FALSE;
 		static BOOL rightActive = FALSE;
@@ -2349,7 +2349,7 @@ void SetLED(void *context, int arglen, const void *args,
 /*
 - (IBAction)getMii: (id)sender
 {
-       NSLog(@"Requesting Mii...");
+       LOG(@"Requesting Mii...");
        [wii getMii:0];
 }
 
@@ -2357,8 +2357,8 @@ void SetLED(void *context, int arglen, const void *args,
 {
        Mii mii = *m;
 
-       NSLog(@"Got Mii named %@ ", mii.creatorName);
-       NSLog(@" at %@",slot);
+       LOG(@"Got Mii named %@ ", mii.creatorName);
+       LOG(@" at %@",slot);
 
        // save Mii binary file
        NSData* miiData = [NSData dataWithBytes:(void*)m length: MII_DATA_SIZE];

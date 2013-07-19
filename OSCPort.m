@@ -39,7 +39,7 @@
     int 	sock;
 
     if ((sock = socket(PF_INET, SOCK_DGRAM, IPPROTO_UDP)) < 0) {
-        NSLog(@"Couldn't create socket");
+        LOG(@"Couldn't create socket");
         return nil;
     }
     
@@ -48,7 +48,7 @@
     serverAddress.sin_port        = htons(portNumber);
     
     if (connect(sock, (struct sockaddr *) &serverAddress, sizeof(serverAddress)) < 0) {
-        NSLog(@"Couldn't connect socket");
+        LOG(@"Couldn't connect socket");
         return nil;
     }
     
@@ -125,8 +125,8 @@
     }
     va_end(args);
     
-#ifdef DEBUG
-	NSLog(@"\tSending packet of size %i to %s", OSC_packetSize(_oscBuffer), OSC_getPacket(_oscBuffer));
+#ifdef DR_DEBUG
+	NSLog(@"Sending packet of size %i to %s", OSC_packetSize(_oscBuffer), OSC_getPacket(_oscBuffer));
 #endif
     return [self completeSend];
 }

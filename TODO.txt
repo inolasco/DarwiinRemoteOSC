@@ -2,6 +2,8 @@ TODO
 
 - Build and test
 - Update project settings (ONLY AFTER TESTING)
+- Convert to ARC
 - Remove warnings
+- Use improved logs
 - Update icon to higher resolution
 - Improve UI

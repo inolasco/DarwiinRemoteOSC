@@ -91,7 +91,7 @@ void* RealTimeMallocForOSC(int numBytes)
 	serv_addr.sin_port = htons(_port);	
 	if( bind(_socket, (struct sockaddr *) &serv_addr, sizeof(serv_addr)) < 0) 
 	{
-		NSLog(@"Could not bind UDP socket for OSC");
+		LOG(@"Could not bind UDP socket for OSC");
 		return NO;
 	}
 
@@ -131,7 +131,7 @@ void* RealTimeMallocForOSC(int numBytes)
 
 	if (!OSCInitReceive(&rt))
 	{
-		NSLog(@"Couldn't start OSC");
+		LOG(@"Couldn't start OSC");
 		return NO;
 	}	
 	
@@ -204,7 +204,7 @@ void* RealTimeMallocForOSC(int numBytes)
 			}
 
 			// if select reported an error
-			NSLog(@"Select failed with error %i", errno);
+			LOG(@"Select failed with error %i", errno);
 			break;
 		}
 

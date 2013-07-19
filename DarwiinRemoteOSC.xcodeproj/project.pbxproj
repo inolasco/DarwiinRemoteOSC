@@ -21,6 +21,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		2CFB16C71799921E00A35145 /* Functions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2CFB16C61799921E00A35145 /* Functions.m */; };
 		39BECDFB1680764F00FA5787 /* copyright in Resources */ = {isa = PBXBuildFile; fileRef = 39BECDDF1680764F00FA5787 /* copyright */; };
 		39BECDFC1680764F00FA5787 /* NetworkReturnAddress.c in Sources */ = {isa = PBXBuildFile; fileRef = 39BECDE01680764F00FA5787 /* NetworkReturnAddress.c */; };
 		39BECDFD1680764F00FA5787 /* OSC-address-space.c in Sources */ = {isa = PBXBuildFile; fileRef = 39BECDE31680764F00FA5787 /* OSC-address-space.c */; };
@@ -87,6 +88,9 @@
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
 		2C7ECEA717998AF600C0E555 /* TODO.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = TODO.txt; sourceTree = "<group>"; };
+		2CFB16C51799921E00A35145 /* Functions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Functions.h; sourceTree = "<group>"; };
+		2CFB16C61799921E00A35145 /* Functions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Functions.m; sourceTree = "<group>"; };
+		2CFB16C81799927100A35145 /* Config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* WiiRemote_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WiiRemote_Prefix.pch; sourceTree = "<group>"; };
 		39BECDDF1680764F00FA5787 /* copyright */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = copyright; sourceTree = "<group>"; };
 		39BECDE01680764F00FA5787 /* NetworkReturnAddress.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = NetworkReturnAddress.c; sourceTree = "<group>"; };
@@ -222,11 +226,9 @@
 		29B97314FDCFA39411CA2CEA /* WiiRemote */ = {
 			isa = PBXGroup;
 			children = (
+				2CFB16C41799921E00A35145 /* Utils */,
 				39FA314B1680656E00387450 /* WiiRemote.framework */,
-				47DE87EE0D022E2F00DA8840 /* Classic Controller.qtz */,
-				471444FB0B8BD97F009B5DD7 /* IR Data.qtz */,
-				47653BE10B6EF35900F7DFEA /* Wiimote Buttons.qtz */,
-				47653BDF0B6EF34400F7DFEA /* Joystick.qtz */,
+				2C7ECEA817998E0000C0E555 /* Quartz */,
 				536851CB0B33087B00A38BE5 /* Models */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
@@ -270,6 +272,27 @@
 				1058C7A2FEA54F0111CA2CBB /* Other Frameworks */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2C7ECEA817998E0000C0E555 /* Quartz */ = {
+			isa = PBXGroup;
+			children = (
+				47DE87EE0D022E2F00DA8840 /* Classic Controller.qtz */,
+				471444FB0B8BD97F009B5DD7 /* IR Data.qtz */,
+				47653BE10B6EF35900F7DFEA /* Wiimote Buttons.qtz */,
+				47653BDF0B6EF34400F7DFEA /* Joystick.qtz */,
+			);
+			name = Quartz;
+			sourceTree = "<group>";
+		};
+		2CFB16C41799921E00A35145 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				2CFB16C81799927100A35145 /* Config.h */,
+				2CFB16C51799921E00A35145 /* Functions.h */,
+				2CFB16C61799921E00A35145 /* Functions.m */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		39BECDDE1680764F00FA5787 /* OSC-Kit-Mac */ = {
@@ -443,6 +466,7 @@
 				39BECE061680764F00FA5787 /* OSC-timetag.c in Sources */,
 				39DD3E1E1680BCC9006F492A /* OSCInPort.m in Sources */,
 				39DD3E1F1680BCC9006F492A /* OSCPort.m in Sources */,
+				2CFB16C71799921E00A35145 /* Functions.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -527,6 +551,8 @@
 				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = WiiRemote_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				PRODUCT_NAME = DarwiinRemoteOSC;
@@ -570,6 +596,8 @@
 				FRAMEWORK_SEARCH_PATHS_QUOTED_FOR_TARGET_6 = "\"$(SRCROOT)\"";
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_MODEL_TUNING = G5;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = WiiRemote_Prefix.pch;
 				INFOPLIST_FILE = Info.plist;
 				INSTALL_PATH = "$(HOME)/Applications";
 				PRODUCT_NAME = DarwiinRemoteOSC;
