@@ -37,7 +37,7 @@
 {
     struct	sockaddr_in serverAddress;
     int 	sock;
-
+    
     if ((sock = socket(PF_INET, SOCK_DGRAM, IPPROTO_UDP)) < 0) {
         LOG(@"Couldn't create socket");
         return nil;
@@ -83,8 +83,8 @@
     return [self sendTo:"/d_load" types:"s", synthDefFilename];
 }
 
-- (BOOL)newSynthFromDef:(char*)synthDefName 
-                synthID:(int)synthID 
+- (BOOL)newSynthFromDef:(char*)synthDefName
+                synthID:(int)synthID
             parentGroup:(int)parentGroup
 {
     return [self sendTo:"/s_new" types:"sii", synthDefName, synthID, parentGroup];
@@ -94,7 +94,7 @@
 {
     return [self sendTo:"/n_free" types:"i", synthID];
 }
-            
+
 - (BOOL)sendTo:(char*)address types:(char*)types, ...
 {
     // potential holders for variable arguments
@@ -104,7 +104,7 @@
     va_start(args, types);
     
     [self beginSendTo:address types:types];
-
+    
     // use the user supplied types for this
     while (*types) {
         switch (*types++) {

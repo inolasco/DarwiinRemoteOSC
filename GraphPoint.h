@@ -16,7 +16,7 @@
 	float value;
 	float x;
 	float y;
-
+    
 }
 
 - (id)initWithCoordX:(float)_x Y:(float) _y time:(struct timeval)_tval;

@@ -10,7 +10,7 @@
 
 
 @interface WidgetsEnableTransformer2 : NSValueTransformer {
-
+    
 }
 
 @end

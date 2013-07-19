@@ -16,7 +16,7 @@
 	BOOL _dataChanged;
 	float _sampleTime;
 	
-	IBOutlet NSTextField* scaleField;  //enables scaling of live window		
+	IBOutlet NSTextField* scaleField;  //enables scaling of live window
 }
 - (void)setFocusPointX:(float)x Y:(float)y;
 - (id) initWithFrame:(NSRect)frame;

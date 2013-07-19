@@ -26,7 +26,7 @@
 	
 	
 	switch([beforeObject intValue]){
-		
+            
 		case 1:
 			return [[NSNumber alloc] initWithBool:YES];
 		default:

@@ -15,8 +15,8 @@
 	float _x;
 	float _y;
 	BOOL _freshGrid;
-
-	IBOutlet NSTextField* scaleField;  //enables scaling of live window		
+    
+	IBOutlet NSTextField* scaleField;  //enables scaling of live window
 }
 - (void)setIRPointX:(float)x Y:(float)y;
 - (id) initWithFrame:(NSRect)frame;

@@ -14,7 +14,7 @@
 @interface OSCInPort : NSObject {
 	// internal state
 	int   _socket;
-	BOOL  _ownsSocket;	
+	BOOL  _ownsSocket;
 	short _port;   // UDP port I listen and send on
 	BOOL  _keepRunning;
 	
@@ -33,10 +33,10 @@
 // doesn't get copied
 - (OSCcontainer)newContainerNamed:(char*)name; // creates sub-container of top-level
 - (OSCcontainer)newContainerNamed:(char*)name under:(OSCcontainer)container;
-- (OSCMethod)newMethodNamed:(char*)name 
-                under:(OSCcontainer)container 
-                callback:(methodCallback)callback 
-                context:(void*)context;
+- (OSCMethod)newMethodNamed:(char*)name
+                      under:(OSCcontainer)container
+                   callback:(methodCallback)callback
+                    context:(void*)context;
 
 - (void)start;
 - (void)stop;

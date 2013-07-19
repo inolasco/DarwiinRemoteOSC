@@ -1,7 +1,7 @@
 #import "GridView.h"
-#import <OpenGL/OpenGL.h> 
-#import <OpenGL/gl.h> 
-#import <OpenGL/glu.h> 
+#import <OpenGL/OpenGL.h>
+#import <OpenGL/gl.h>
+#import <OpenGL/glu.h>
 #import "GraphPoint.h"
 #import <sys/time.h>
 
@@ -16,15 +16,15 @@
 	_x = _y = FLT_MIN;
 	_sampleTime = DEFAULT_SAMPLETIME;
 	[self startTimer];
-
+    
 }
 
-- (void) resizeView : (NSRect) rect { 
-	glViewport( (GLint) rect.origin.x  , (GLint) rect.origin.y, 
-				(GLint) rect.size.width, (GLint) rect.size.height ); 
+- (void) resizeView : (NSRect) rect {
+	glViewport( (GLint) rect.origin.x  , (GLint) rect.origin.y,
+               (GLint) rect.size.width, (GLint) rect.size.height );
 	[self drawGrid];
-
-} 
+    
+}
 
 - (void)setFocusPointX:(float)x Y:(float)y{
 	_x = x;
@@ -35,27 +35,27 @@
 - (id) initWithFrame : (NSRect) frameRect{
 	/* Hack used FLT_MIN as value, meaning not yet set */
 	
-	NSOpenGLPixelFormatAttribute attr[] = { 
-		NSOpenGLPFADoubleBuffer, 
-		NSOpenGLPFAAccelerated , 
+	NSOpenGLPixelFormatAttribute attr[] = {
+		NSOpenGLPFADoubleBuffer,
+		NSOpenGLPFAAccelerated ,
 		NSOpenGLPFAStencilSize , 32,
 		NSOpenGLPFAColorSize   , 32,
 		NSOpenGLPFADepthSize   , 32,
 		0
 	};
 	
-	NSOpenGLPixelFormat* pFormat; 
-	pFormat = [ [ [ NSOpenGLPixelFormat alloc ] initWithAttributes : attr ] autorelease ]; 
+	NSOpenGLPixelFormat* pFormat;
+	pFormat = [ [ [ NSOpenGLPixelFormat alloc ] initWithAttributes : attr ] autorelease ];
 	self = [ super initWithFrame : frameRect pixelFormat : pFormat ];
 	[ [ self openGLContext ] makeCurrentContext ];
 	glClearColor( 1.0, 1.0, 1.0, 1.0 );
 	[self display];
-	return( self ); 
+	return( self );
 }
 
 -(void)startTimer{
 	animTimer = [NSTimer scheduledTimerWithTimeInterval:0.03 target:self selector:@selector(drawAnimation:) userInfo:nil repeats:YES];
-
+    
 }
 
 - (void)stopTimer{
@@ -147,7 +147,7 @@
 	gettimeofday(&tval, &tzone);
 	const float scale = [scaleField floatValue];
 	float pointsize = 0.01;
-
+    
 	/* Make sure to draw grid on initial load */
 	if (_freshGrid) {
 		[self drawGrid];
@@ -174,14 +174,14 @@
 			float age = rand() / RAND_MAX;
 			glColor4f(1.0, 0.0, 0.0, age);			//redish
 			glRectf( x - pointsize* (rect.size.height / rect.size.width), y - pointsize, x + pointsize * (rect.size.height / rect.size.width), y + pointsize );
-		}	
+		}
 	}
 	
 	if (_x != FLT_MIN) {
 		/* XXX: Do something pretty with fixed focus point */
 		glColor4f(0.0, 0.0, 1.0, 0.5);			//yellow
 		pointsize *= 2;
-		glRectf((_x / scale) - pointsize * (rect.size.height / rect.size.width), (_y /scale) - pointsize, (_x /scale) + pointsize * (rect.size.height / rect.size.width), (_y /scale) + pointsize );	
+		glRectf((_x / scale) - pointsize * (rect.size.height / rect.size.width), (_y /scale) - pointsize, (_x /scale) + pointsize * (rect.size.height / rect.size.width), (_y /scale) + pointsize );
 	}
 	glFinish();
 	[[self openGLContext] flushBuffer];
@@ -216,7 +216,7 @@
 	[data addObject:point];
 	[point release];
 	_dataChanged = TRUE;
-
+    
 }
 
 -(void)reset {

@@ -31,13 +31,13 @@
 @end
 
 
-void* InitTimeMallocForOSC(int numBytes) 
+void* InitTimeMallocForOSC(int numBytes)
 {
 	return malloc(numBytes);
 }
 
 // Nothing I do is really that time critical -- just use malloc at realtime
-void* RealTimeMallocForOSC(int numBytes) 
+void* RealTimeMallocForOSC(int numBytes)
 {
 	return malloc(numBytes);
 }
@@ -76,25 +76,25 @@ void* RealTimeMallocForOSC(int numBytes)
 - (BOOL)createSocket
 {
 	struct sockaddr_in serv_addr;
-
+    
 	// create a UDP socket
 	_socket = socket(PF_INET, SOCK_DGRAM, 0);
-
+    
 	if (_socket < 0)
 		return NO;
-	_ownsSocket = YES; 
-
+	_ownsSocket = YES;
+    
 	// bind the socket
 	bzero((char *)&serv_addr, sizeof(serv_addr));
 	serv_addr.sin_family = AF_INET;
 	serv_addr.sin_addr.s_addr = htonl(INADDR_ANY);
-	serv_addr.sin_port = htons(_port);	
-	if( bind(_socket, (struct sockaddr *) &serv_addr, sizeof(serv_addr)) < 0) 
+	serv_addr.sin_port = htons(_port);
+	if( bind(_socket, (struct sockaddr *) &serv_addr, sizeof(serv_addr)) < 0)
 	{
 		LOG(@"Could not bind UDP socket for OSC");
 		return NO;
 	}
-
+    
 	// set the socket to non-blocking
 	fcntl(_socket, F_SETFL, FNDELAY);
 	return YES;
@@ -110,30 +110,30 @@ void* RealTimeMallocForOSC(int numBytes)
 	tun.RealTimeMemoryAllocator = RealTimeMallocForOSC;
 	
 	// create top level address space
-	_topLevelContainer = OSCInitAddressSpace(&tun);	
+	_topLevelContainer = OSCInitAddressSpace(&tun);
 	
 	OSCInitContainerQueryResponseInfo(&_cqinfo);
 	OSCInitMethodQueryResponseInfo(&_mqinfo);
-
+    
 	return YES;
 }
 
 - (BOOL)initializeOSC
 {
 	struct OSCReceiveMemoryTuner rt;
-
+    
 	rt.InitTimeMemoryAllocator = InitTimeMallocForOSC;
 	rt.RealTimeMemoryAllocator = RealTimeMallocForOSC;
 	rt.receiveBufferSize = 1000;
 	rt.numReceiveBuffers = 50;
 	rt.numQueuedObjects = 100;
 	rt.numCallbackListNodes = 100;
-
+    
 	if (!OSCInitReceive(&rt))
 	{
 		LOG(@"Couldn't start OSC");
 		return NO;
-	}	
+	}
 	
 	return YES;
 }
@@ -147,11 +147,11 @@ void* RealTimeMallocForOSC(int numBytes)
 	int capacity = OSCGetReceiveBufferSize();
 	BOOL morePackets = YES;
     char *buf;
-
-	while (morePackets) 
+    
+	while (morePackets)
 	{
 		pb = OSCAllocPacketBuffer();
-		if (!pb) 
+		if (!pb)
 		{
 			OSCWarning("Out of memory for packet buffers---had to drop a packet!");
 			return;
@@ -161,11 +161,11 @@ void* RealTimeMallocForOSC(int numBytes)
 		ra->clilen = maxclilen;
 		ra->sockfd = _socket;
 		n = recvfrom(_socket, buf, capacity, 0, (struct sockaddr*)&(ra->cl_addr), &(ra->clilen));
-		if (n > 0) 
+		if (n > 0)
 		{
 			// accept the packet
 			int * sizep = OSCPacketBufferGetSize(pb);
-			*sizep = n;			
+			*sizep = n;
 			OSCAcceptPacket(pb);
 			
 		} else {
@@ -176,12 +176,12 @@ void* RealTimeMallocForOSC(int numBytes)
 }
 
 - (void)runListeningLoop:(id)argument
-{	
+{
 	fd_set read_fds;
 	int numReadyDescriptors;
 	struct timeval tv;
 	struct timeval* timeout;
-
+    
 	// to keep Cocoa happy
 	NSAutoreleasePool* pool = [[NSAutoreleasePool alloc] init];
 	
@@ -192,33 +192,33 @@ void* RealTimeMallocForOSC(int numBytes)
 		// Set up the select file descriptor lists
 		FD_ZERO(&read_fds);           // clear read_fds
 		FD_SET(_socket, &read_fds);   // read from the OSC socket
-
+        
 		// Find out which socket has data available
 		numReadyDescriptors = select(_socket + 1, &read_fds, (fd_set*)NULL, (fd_set*)NULL, timeout);
-		if (numReadyDescriptors < 0) 
+		if (numReadyDescriptors < 0)
 		{
 			if (!_keepRunning)
 			{
 				// select failed because the socket got closed... which should happen
 				break;
 			}
-
+            
 			// if select reported an error
 			LOG(@"Select failed with error %i", errno);
 			break;
 		}
-
+        
 		if(FD_ISSET(_socket, &read_fds))   // if there's a message coming in
 			[self receivePacket];          // accept the packet
 	}
-
+    
 	[pool release];
 }
 
 - (void)runListenerIteration:(struct timeval**)timeout tv:(struct timeval*)tv
-{	
+{
 	OSCTimeTag currentTime, timeOfNextEvent;
-
+    
 	currentTime = OSCTT_CurrentTime();
 	OSCInvokeAllMessagesThatAreReady(currentTime);
 	timeOfNextEvent = OSCTimeTagForNextMessage();
@@ -230,11 +230,11 @@ void* RealTimeMallocForOSC(int numBytes)
 	} else {
 		// no more events in the queue. Wait until something comes in
 		*timeout = NULL;
-	}		
+	}
 }
 
 - (void)start {
-	[NSThread detachNewThreadSelector: @selector(runListeningLoop:) toTarget: self withObject: nil];	
+	[NSThread detachNewThreadSelector: @selector(runListeningLoop:) toTarget: self withObject: nil];
 }
 
 - (void)stop
@@ -259,8 +259,8 @@ void* RealTimeMallocForOSC(int numBytes)
 	return OSCNewContainer(name, container, &_cqinfo);
 }
 
-- (OSCMethod)newMethodNamed:(char*)name under:(OSCcontainer)container 
-	callback:(methodCallback)callback context:(void*)context
+- (OSCMethod)newMethodNamed:(char*)name under:(OSCcontainer)container
+                   callback:(methodCallback)callback context:(void*)context
 {
 	return OSCNewMethod(name, container, callback, context, &_mqinfo);
 }

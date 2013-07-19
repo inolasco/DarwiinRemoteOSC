@@ -1,7 +1,7 @@
 #import "GraphView.h"
-#import <OpenGL/OpenGL.h> 
-#import <OpenGL/gl.h> 
-#import <OpenGL/glu.h> 
+#import <OpenGL/OpenGL.h>
+#import <OpenGL/gl.h>
+#import <OpenGL/glu.h>
 #import "GraphPoint.h"
 #import <sys/time.h>
 
@@ -16,11 +16,11 @@
 	_freshGrid = TRUE;
 }
 
-- (void) resizeView : (NSRect) rect { 
-	glViewport( (GLint) rect.origin.x  , (GLint) rect.origin.y, 
-				(GLint) rect.size.width, (GLint) rect.size.height ); 
-
-} 
+- (void) resizeView : (NSRect) rect {
+	glViewport( (GLint) rect.origin.x  , (GLint) rect.origin.y,
+               (GLint) rect.size.width, (GLint) rect.size.height );
+    
+}
 
 - (void)setIRPointX:(float)x Y:(float)y{
 	_x = x;
@@ -31,27 +31,27 @@
 	
 	_x = _y = -2;
 	
-	NSOpenGLPixelFormatAttribute attr[] = { 
-		NSOpenGLPFADoubleBuffer, 
-		NSOpenGLPFAAccelerated , 
+	NSOpenGLPixelFormatAttribute attr[] = {
+		NSOpenGLPFADoubleBuffer,
+		NSOpenGLPFAAccelerated ,
 		NSOpenGLPFAStencilSize , 32,
 		NSOpenGLPFAColorSize   , 32,
 		NSOpenGLPFADepthSize   , 32,
 		0
 	};
 	
-	NSOpenGLPixelFormat* pFormat; 
-	pFormat = [ [ [ NSOpenGLPixelFormat alloc ] initWithAttributes : attr ] autorelease ]; 
+	NSOpenGLPixelFormat* pFormat;
+	pFormat = [ [ [ NSOpenGLPixelFormat alloc ] initWithAttributes : attr ] autorelease ];
 	self = [ super initWithFrame : frameRect pixelFormat : pFormat ];
 	[ [ self openGLContext ] makeCurrentContext ];
 	glClearColor( 1.0, 1.0, 1.0, 1.0 );
 	[self display];
-	return( self ); 
+	return( self );
 }
 
 -(void)startTimer{
 	animTimer = [NSTimer scheduledTimerWithTimeInterval:0.03 target:self selector:@selector(drawAnimation:) userInfo:nil repeats:YES];
-
+    
 }
 
 - (void)stopTimer{
@@ -147,11 +147,11 @@
 	
 	if (![datax count] || ![datay count] || ![dataz count])
 		return;
-
+    
 	[self drawGrid];
 	
-//Now we're plotting data.
-			
+    //Now we're plotting data.
+    
 	glBegin (GL_LINE_STRIP);
 	{
 		int i;
@@ -161,7 +161,7 @@
 			float y = [p value] / scale;
 			float x = [self timeDif:[p timeValue] subtract:tval]/5 + 1.0;
 			glVertex2f(x, y);
-		}	
+		}
 	}
 	glEnd();
 	
@@ -174,7 +174,7 @@
 			float y = [p value] / scale;
 			float x = [self timeDif:[p timeValue] subtract:tval]/5 + 1.0;
 			glVertex2f(x, y);
-		}		
+		}
 	}
 	glEnd();
 	
@@ -195,7 +195,7 @@
 		glColor4f(1.0, 1.0, 0.0, 1.0);
 		glRectf( _x - 0.05* (rect.size.height / rect.size.width), _y - 0.05, _x + 0.05 * (rect.size.height / rect.size.width), _y + 0.05 );
 	}
-
+    
 	
 	glFinish();
 	[[self openGLContext] flushBuffer];
@@ -235,7 +235,7 @@
 	[pointX release];
 	[pointY release];
 	[pointZ release];
-
+    
 }
 
 

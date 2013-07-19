@@ -63,7 +63,7 @@
 	
 	IBOutlet NSView* nunchukView;
 	IBOutlet NSView* ccView;
-
+    
 	IBOutlet NSView* batteryLevelView;
 	IBOutlet NSLevelIndicator* batteryLevel;
     IBOutlet NSTextField* theRemoteAddress;
@@ -75,7 +75,7 @@
 	IBOutlet QCView* irQCView;
 	IBOutlet QCView* ccQCView;
 	IBOutlet QCView* bbQCView;
-
+    
 	IBOutlet NSTextField* newNameField;
 	
 	IBOutlet NSTextField* WiimoteX;
@@ -99,26 +99,26 @@
 	IBOutlet NSTextField* irPoint1X;
 	IBOutlet NSTextField* irPoint1Y;
 	IBOutlet NSTextField* irPoint1Size;
-
+    
 	IBOutlet NSTextField* irPoint2X;
 	IBOutlet NSTextField* irPoint2Y;
 	IBOutlet NSTextField* irPoint2Size;
-
+    
 	IBOutlet NSTextField* irPoint3X;
 	IBOutlet NSTextField* irPoint3Y;
 	IBOutlet NSTextField* irPoint3Size;
-
+    
 	IBOutlet NSTextField* irPoint4X;
 	IBOutlet NSTextField* irPoint4Y;
 	IBOutlet NSTextField* irPoint4Size;
 	
-	IBOutlet NSTextField* bPressureTR;	
-	IBOutlet NSTextField* bPressureBR;	
-	IBOutlet NSTextField* bPressureTL;	
+	IBOutlet NSTextField* bPressureTR;
+	IBOutlet NSTextField* bPressureBR;
+	IBOutlet NSTextField* bPressureTL;
 	IBOutlet NSTextField* bPressureBL;
-
-//enable recording of data	
-	IBOutlet NSButton* recordButton;  
+    
+    //enable recording of data
+	IBOutlet NSButton* recordButton;
 	NSMutableString* recordData;
 	NSSavePanel* savePanel;
 	BOOL recordToFile;
@@ -156,7 +156,7 @@
 	IBOutlet NSTextField* cogRecordDelay;
 	IBOutlet NSButton* cogResetButton;
 	IBOutlet NSTextField* cogSampleSize;
-	IBOutlet NSButton* cogSampleSizeButton;	
+	IBOutlet NSButton* cogSampleSizeButton;
 	IBOutlet NSTextField* cogTextInfo;
 	IBOutlet NSTextField* cogRecordTime;
 	IBOutlet NSTextField* cogWeight;
@@ -170,7 +170,7 @@
 	float cogSamples;
 	float cogRawWeight;
 	NSTimer* cogRecordTimer;
-
+    
 }
 
 - (void)setupInitialKeyMappings;

@@ -8,8 +8,8 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface KeyConfiguration_AppDelegate : NSObject 
-{    
+@interface KeyConfiguration_AppDelegate : NSObject
+{
     NSPersistentStoreCoordinator *persistentStoreCoordinator;
     NSManagedObjectModel *managedObjectModel;
     NSManagedObjectContext *managedObjectContext;
