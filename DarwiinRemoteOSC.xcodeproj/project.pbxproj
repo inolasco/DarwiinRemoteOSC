@@ -37,6 +37,10 @@
 		2CFB16F41799C0B900A35145 /* README in Resources */ = {isa = PBXBuildFile; fileRef = 2CFB16E61799C0B900A35145 /* README */; };
 		2CFB16F51799C0B900A35145 /* tags in Resources */ = {isa = PBXBuildFile; fileRef = 2CFB16E71799C0B900A35145 /* tags */; };
 		2CFB16F81799C17000A35145 /* MainMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = 2CFB16F71799C17000A35145 /* MainMenu.nib */; };
+		2CFB16FA1799D89600A35145 /* README.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2CFB16F91799D89500A35145 /* README.txt */; };
+		2CFB17001799D8A100A35145 /* addressSpace.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2CFB16FC1799D8A100A35145 /* addressSpace.txt */; };
+		2CFB17011799D8A100A35145 /* COPYRIGHT.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2CFB16FD1799D8A100A35145 /* COPYRIGHT.txt */; };
+		2CFB17021799D8A100A35145 /* HISTORY.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2CFB16FE1799D8A100A35145 /* HISTORY.txt */; };
 		39DD3E1E1680BCC9006F492A /* OSCInPort.m in Sources */ = {isa = PBXBuildFile; fileRef = 39DD3E1B1680BCC9006F492A /* OSCInPort.m */; };
 		39DD3E1F1680BCC9006F492A /* OSCPort.m in Sources */ = {isa = PBXBuildFile; fileRef = 39DD3E1D1680BCC9006F492A /* OSCPort.m */; };
 		39FA314A1680654100387450 /* WiiRemote.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39FA31491680654100387450 /* WiiRemote.framework */; };
@@ -52,8 +56,6 @@
 		5368529D0B33172200A38BE5 /* KeyConfiguration_AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 536852970B33172200A38BE5 /* KeyConfiguration_AppDelegate.m */; };
 		5368529E0B33172200A38BE5 /* KeyConfiguration_DataModel.xcdatamodel in Sources */ = {isa = PBXBuildFile; fileRef = 536852980B33172200A38BE5 /* KeyConfiguration_DataModel.xcdatamodel */; };
 		539021E60B383F61004E3DE7 /* WidgetsEnableTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = 539021E40B383F61004E3DE7 /* WidgetsEnableTransformer.m */; };
-		53BDDEBB0B2B22710033DB22 /* COPYRIGHT.txt in Resources */ = {isa = PBXBuildFile; fileRef = 53BDDEBA0B2B22710033DB22 /* COPYRIGHT.txt */; };
-		53BDDEBD0B2B229B0033DB22 /* HISTORY.txt in Resources */ = {isa = PBXBuildFile; fileRef = 53BDDEBC0B2B229B0033DB22 /* HISTORY.txt */; };
 		53C573550B24870B00D36527 /* GraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = 53C573540B24870B00D36527 /* GraphView.m */; };
 		53C576B60B2497D500D36527 /* OpenGL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53C576B50B2497D500D36527 /* OpenGL.framework */; };
 		53C576F90B24999B00D36527 /* GraphPoint.m in Sources */ = {isa = PBXBuildFile; fileRef = 53C576F80B24999B00D36527 /* GraphPoint.m */; };
@@ -86,7 +88,6 @@
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
 		29B97325FDCFA39411CA2CEA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = /System/Library/Frameworks/Foundation.framework; sourceTree = "<absolute>"; };
-		2C7ECEA717998AF600C0E555 /* TODO.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = TODO.txt; sourceTree = "<group>"; };
 		2CFB16C51799921E00A35145 /* Functions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Functions.h; sourceTree = "<group>"; };
 		2CFB16C61799921E00A35145 /* Functions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Functions.m; sourceTree = "<group>"; };
 		2CFB16C81799927100A35145 /* Config.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Config.h; sourceTree = "<group>"; };
@@ -119,6 +120,10 @@
 		2CFB16E61799C0B900A35145 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
 		2CFB16E71799C0B900A35145 /* tags */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = tags; sourceTree = "<group>"; };
 		2CFB16F71799C17000A35145 /* MainMenu.nib */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; path = MainMenu.nib; sourceTree = "<group>"; };
+		2CFB16F91799D89500A35145 /* README.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.txt; sourceTree = "<group>"; };
+		2CFB16FC1799D8A100A35145 /* addressSpace.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = addressSpace.txt; sourceTree = "<group>"; };
+		2CFB16FD1799D8A100A35145 /* COPYRIGHT.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = COPYRIGHT.txt; sourceTree = "<group>"; };
+		2CFB16FE1799D8A100A35145 /* HISTORY.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = HISTORY.txt; sourceTree = "<group>"; };
 		32CA4F630368D1EE00C91783 /* WiiRemote_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WiiRemote_Prefix.pch; sourceTree = "<group>"; };
 		39DD3E1A1680BCC9006F492A /* OSCInPort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OSCInPort.h; sourceTree = "<group>"; };
 		39DD3E1B1680BCC9006F492A /* OSCInPort.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OSCInPort.m; sourceTree = "<group>"; };
@@ -142,8 +147,6 @@
 		536852980B33172200A38BE5 /* KeyConfiguration_DataModel.xcdatamodel */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = wrapper.xcdatamodel; path = KeyConfiguration_DataModel.xcdatamodel; sourceTree = "<group>"; };
 		539021E30B383F61004E3DE7 /* WidgetsEnableTransformer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WidgetsEnableTransformer.h; sourceTree = "<group>"; };
 		539021E40B383F61004E3DE7 /* WidgetsEnableTransformer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WidgetsEnableTransformer.m; sourceTree = "<group>"; };
-		53BDDEBA0B2B22710033DB22 /* COPYRIGHT.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = COPYRIGHT.txt; sourceTree = "<group>"; };
-		53BDDEBC0B2B229B0033DB22 /* HISTORY.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = HISTORY.txt; sourceTree = "<group>"; };
 		53C573530B24870B00D36527 /* GraphView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphView.h; sourceTree = "<group>"; };
 		53C573540B24870B00D36527 /* GraphView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GraphView.m; sourceTree = "<group>"; };
 		53C576B50B2497D500D36527 /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = /System/Library/Frameworks/OpenGL.framework; sourceTree = "<absolute>"; };
@@ -226,6 +229,8 @@
 		29B97314FDCFA39411CA2CEA /* WiiRemote */ = {
 			isa = PBXGroup;
 			children = (
+				2CFB16F91799D89500A35145 /* README.txt */,
+				2CFB16FB1799D8A100A35145 /* Docs */,
 				2CFB16CA1799C0B800A35145 /* Lib */,
 				2CFB16C41799921E00A35145 /* Utils */,
 				39FA314B1680656E00387450 /* WiiRemote.framework */,
@@ -233,7 +238,6 @@
 				536851CB0B33087B00A38BE5 /* Models */,
 				080E96DDFE201D6D7F000001 /* Classes */,
 				29B97315FDCFA39411CA2CEA /* Other Sources */,
-				53BDDEB90B2B22540033DB22 /* Docs */,
 				29B97317FDCFA39411CA2CEA /* Resources */,
 				29B97323FDCFA39411CA2CEA /* Frameworks */,
 				19C28FACFE9D520D11CA2CBB /* Products */,
@@ -347,6 +351,16 @@
 			path = Resources/Nibs;
 			sourceTree = "<group>";
 		};
+		2CFB16FB1799D8A100A35145 /* Docs */ = {
+			isa = PBXGroup;
+			children = (
+				2CFB16FC1799D8A100A35145 /* addressSpace.txt */,
+				2CFB16FD1799D8A100A35145 /* COPYRIGHT.txt */,
+				2CFB16FE1799D8A100A35145 /* HISTORY.txt */,
+			);
+			path = Docs;
+			sourceTree = "<group>";
+		};
 		536851CB0B33087B00A38BE5 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -359,16 +373,6 @@
 				535197AC0B39657F007184B2 /* WidgetsEnableTransformer2.m */,
 			);
 			name = Models;
-			sourceTree = "<group>";
-		};
-		53BDDEB90B2B22540033DB22 /* Docs */ = {
-			isa = PBXGroup;
-			children = (
-				53BDDEBA0B2B22710033DB22 /* COPYRIGHT.txt */,
-				53BDDEBC0B2B229B0033DB22 /* HISTORY.txt */,
-				2C7ECEA717998AF600C0E555 /* TODO.txt */,
-			);
-			name = Docs;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -425,8 +429,6 @@
 			files = (
 				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
 				53F79ADC0B261EBE00C74335 /* icon.icns in Resources */,
-				53BDDEBB0B2B22710033DB22 /* COPYRIGHT.txt in Resources */,
-				53BDDEBD0B2B229B0033DB22 /* HISTORY.txt in Resources */,
 				47653BE00B6EF34400F7DFEA /* Joystick.qtz in Resources */,
 				47653BE20B6EF35900F7DFEA /* Wiimote Buttons.qtz in Resources */,
 				471444FC0B8BD980009B5DD7 /* IR Data.qtz in Resources */,
@@ -435,6 +437,10 @@
 				2CFB16F41799C0B900A35145 /* README in Resources */,
 				2CFB16F51799C0B900A35145 /* tags in Resources */,
 				2CFB16F81799C17000A35145 /* MainMenu.nib in Resources */,
+				2CFB16FA1799D89600A35145 /* README.txt in Resources */,
+				2CFB17001799D8A100A35145 /* addressSpace.txt in Resources */,
+				2CFB17011799D8A100A35145 /* COPYRIGHT.txt in Resources */,
+				2CFB17021799D8A100A35145 /* HISTORY.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

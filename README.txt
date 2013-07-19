@@ -1,8 +1,9 @@
-darwiinosc
-darwiin remote with osc extension for osx (Mountain Lion)
+# DarwiinOSC
 
-based on DarwiinRemote 0.7 (http://sourceforge.net/projects/darwiin-remote/) and modified WiiRemoteFramework
-osc functionality based on https://code.google.com/p/darwiinosc/ by andreas schlegel
+Darwiin remote with OSC extension for Max OS X (Mountain Lion)
+
+Based on [DarwiinRemote 0.7] (http://sourceforge.net/projects/darwiin-remote/) and a modified WiiRemoteFramework
+OSC functionality based on https://code.google.com/p/darwiinosc/ by andreas schlegel
 
 
 adapted by Matthias Kronlachner
@@ -10,8 +11,8 @@ www.matthiaskronlachner.com
 
 
 
-:::CHANGING OSC IP/PORT SEND/RECEIVE SETTINGS:::
-
+Changing osc ip/port send/receive settings
+-------------------------
 You can change Sender IP:PORT and Receiver Port by commandline arguments:
 
 open terminal and go to folder DarwiinRemote.app/Contents/MacOS
@@ -24,5 +25,11 @@ this is very useful if you connect multiple wii controllers!
 -> start multiple instances with different port settings...
 
 
-:::TODO:::
-MotionPlus support -> WiiRemoteFramework 
+TODO
+-------------------------
+* Fix issue with Mame OS X receiving input on menu, but not on games
+* Convert to ARC
+    * Replace void* context with protocols
+* Remove warnings
+* Update icon to higher resolution
+* Improve UI
