@@ -125,9 +125,9 @@
     }
     va_end(args);
     
-#ifdef DR_DEBUG
-	NSLog(@"Sending packet of size %i to %s", OSC_packetSize(_oscBuffer), OSC_getPacket(_oscBuffer));
-#endif
+//#ifdef DR_DEBUG
+//	LOG(@"Sending packet of size %i to %s", OSC_packetSize(_oscBuffer), OSC_getPacket(_oscBuffer));
+//#endif
     return [self completeSend];
 }
 
