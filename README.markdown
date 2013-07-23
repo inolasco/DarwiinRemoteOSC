@@ -26,7 +26,6 @@ This is very useful if you connect multiple wii controllers
 
 TODO
 -------------------------
-* Fix issue with Mame OS X receiving input on menu, but not on games
 * Add disconnect button
 * Convert to ARC
     * Replace void* context with protocols
