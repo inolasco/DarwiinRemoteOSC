@@ -42,8 +42,7 @@
     [allBundles addObject: [NSBundle mainBundle]];
     [allBundles addObjectsFromArray: [NSBundle allFrameworks]];
     
-    managedObjectModel = [[NSManagedObjectModel mergedModelFromBundles: [allBundles allObjects]] retain];
-    [allBundles release];
+    managedObjectModel = [NSManagedObjectModel mergedModelFromBundles: [allBundles allObjects]];
     
     return managedObjectModel;
 }
@@ -184,10 +183,9 @@
 
 - (void) dealloc {
     
-    [managedObjectContext release], managedObjectContext = nil;
-    [persistentStoreCoordinator release], persistentStoreCoordinator = nil;
-    [managedObjectModel release], managedObjectModel = nil;
-    [super dealloc];
+    managedObjectContext = nil;
+    persistentStoreCoordinator = nil;
+    managedObjectModel = nil;
 }
 
 

@@ -1,5 +1,5 @@
 /*
-Copyright © 1998. The Regents of the University of California (Regents). 
+Copyright ï¿½ 1998. The Regents of the University of California (Regents). 
 All Rights Reserved.
 
 Written by Matt Wright, The Center for New Music and Audio Technologies,
@@ -382,8 +382,7 @@ OSCMethod OSCNewMethod(Name name, OSCcontainer me, methodCallback callback,
     OSCMethod m;
 
 #ifdef DEBUG
-    printf("OSCNewMethod(name %s, container %p, callback %p, context %p)\n",
-	   name, me, callback, context);
+    printf("OSCNewMethod(name %s, container %p, callback %p, context %p)\n", name, me, callback, context);
 #endif
 
     if (strchr(name, '/') != NULL) {

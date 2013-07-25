@@ -49,7 +49,6 @@ void* RealTimeMallocForOSC(int numBytes)
 	// Need to free OSC memory. Perhaps I should keep track
 	// of OSC's calls to the provided Malloc function?
 	[self cleanup];
-	[super dealloc];
 }
 
 - (id)initPort:(short)port {
@@ -57,15 +56,12 @@ void* RealTimeMallocForOSC(int numBytes)
 	if (self) {
 		_port = port;
 		if (![self createSocket]) {
-			[self release];
 			return nil;
 		}
 		if (![self createOSCAddressSpace]) {
-			[self release];
 			return nil;
 		}
 		if (![self initializeOSC]) {
-			[self release];
 			return nil;
 		}
 	}
@@ -183,36 +179,36 @@ void* RealTimeMallocForOSC(int numBytes)
 	struct timeval* timeout;
     
 	// to keep Cocoa happy
-	NSAutoreleasePool* pool = [[NSAutoreleasePool alloc] init];
+	@autoreleasepool {
 	
-	_keepRunning = YES;
-	while(_keepRunning) {
-		[self runListenerIteration: &timeout tv: &tv];
-		
-		// Set up the select file descriptor lists
-		FD_ZERO(&read_fds);           // clear read_fds
-		FD_SET(_socket, &read_fds);   // read from the OSC socket
+		_keepRunning = YES;
+		while(_keepRunning) {
+			[self runListenerIteration: &timeout tv: &tv];
+			
+			// Set up the select file descriptor lists
+			FD_ZERO(&read_fds);           // clear read_fds
+			FD_SET(_socket, &read_fds);   // read from the OSC socket
         
-		// Find out which socket has data available
-		numReadyDescriptors = select(_socket + 1, &read_fds, (fd_set*)NULL, (fd_set*)NULL, timeout);
-		if (numReadyDescriptors < 0)
-		{
-			if (!_keepRunning)
+			// Find out which socket has data available
+			numReadyDescriptors = select(_socket + 1, &read_fds, (fd_set*)NULL, (fd_set*)NULL, timeout);
+			if (numReadyDescriptors < 0)
 			{
-				// select failed because the socket got closed... which should happen
+				if (!_keepRunning)
+				{
+					// select failed because the socket got closed... which should happen
+					break;
+				}
+            
+				// if select reported an error
+				LOG(@"Select failed with error %i", errno);
 				break;
 			}
-            
-			// if select reported an error
-			LOG(@"Select failed with error %i", errno);
-			break;
-		}
         
-		if(FD_ISSET(_socket, &read_fds))   // if there's a message coming in
-			[self receivePacket];          // accept the packet
-	}
+			if(FD_ISSET(_socket, &read_fds))   // if there's a message coming in
+				[self receivePacket];          // accept the packet
+		}
     
-	[pool release];
+	}
 }
 
 - (void)runListenerIteration:(struct timeval**)timeout tv:(struct timeval*)tv

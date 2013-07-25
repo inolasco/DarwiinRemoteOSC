@@ -10,7 +10,7 @@
 
 - (void)awakeFromNib{
 	lock  = [[NSLock alloc] init];
-	data = [[NSMutableArray array] retain];
+	data = [NSMutableArray array];
 	_freshGrid = TRUE;
 	_dataChanged = FALSE;
 	_x = _y = FLT_MIN;
@@ -45,7 +45,7 @@
 	};
 	
 	NSOpenGLPixelFormat* pFormat;
-	pFormat = [ [ [ NSOpenGLPixelFormat alloc ] initWithAttributes : attr ] autorelease ];
+	pFormat = [ [ NSOpenGLPixelFormat alloc ] initWithAttributes : attr ];
 	self = [ super initWithFrame : frameRect pixelFormat : pFormat ];
 	[ [ self openGLContext ] makeCurrentContext ];
 	glClearColor( 1.0, 1.0, 1.0, 1.0 );
@@ -214,7 +214,6 @@
 	GraphPoint* point = [[GraphPoint alloc] initWithCoordX:x Y:y time:tval];
 	
 	[data addObject:point];
-	[point release];
 	_dataChanged = TRUE;
     
 }

@@ -11,6 +11,11 @@ extern int *_NSGetArgc(void);
 extern char ***_NSGetEnviron(void);
 extern char **_NSGetProgname(void);
 
+@protocol lala <NSObject>
+
+
+@end
+
 @implementation AppController
 
 // http://google-toolbox-for-mac.googlecode.com/svn/trunk/UnitTesting/GTMUnitTestingUtilities.m (Apache	2.0 licence)
@@ -178,7 +183,7 @@ static CGKeyCode GTMKeyCodeForCharCode(CGCharCode charCode) {
 		// Let's save the data succesfully selected and created file
 		if (ret) {
 			// Update display and status
-			recordHandle = [[NSFileHandle fileHandleForWritingAtPath:savePanel.URL.path] retain];
+			recordHandle = [NSFileHandle fileHandleForWritingAtPath:savePanel.URL.path];
 			// set to end will avoid overwriting header values ;-)
 			[recordHandle seekToEndOfFile];
 			
@@ -190,7 +195,6 @@ static CGKeyCode GTMKeyCodeForCharCode(CGCharCode charCode) {
 		// Done recording, update state
 		[sender setTitle:@"Start"];
 		[recordHandle closeFile];
-		[recordHandle release];
 		recordToFile = NO;
 	}
 }
@@ -238,7 +242,8 @@ BOOL ReadOSCInts(int arglen, const void* args, int numInts, int* outInts, NSStri
 void GetBatteryLevel(void *context, int arglen, const void *args,
                      OSCTimeTag when, NetworkReturnAddressPtr returnAddr)
 {
-	[context sendBatteryLevel];
+    
+	[((__bridge AppController*)context) sendBatteryLevel];
 }
 
 
@@ -249,9 +254,9 @@ void SetForceFeedback(void *context, int arglen, const void *args,
 	NSString* errorMessage = @"Incorrect arguments to noteOn. Arguments should be int channel, int note, int velocity";
 	if (ReadOSCInts(arglen, args, 1, receivedArgs, errorMessage)) {
         if(receivedArgs[0]==0) {
-            [context setForceFeedback:NO];
+            [((__bridge AppController*)context) setForceFeedback:NO];
         } else {
-            [context setForceFeedback:YES];
+            [((__bridge AppController*)context) setForceFeedback:YES];
         }
     }
 }
@@ -261,9 +266,11 @@ void SetLED(void *context, int arglen, const void *args,
             OSCTimeTag when, NetworkReturnAddressPtr returnAddr)
 {
 	int receivedArgs[4];
+
 	NSString* errorMessage = @"Incorrect arguments to setLED.";
+
 	if (ReadOSCInts(arglen, args, 4, receivedArgs, errorMessage)) {
-		[context setLeds:(receivedArgs[0]==0) ? NO:YES theEnabled2:(receivedArgs[1]==0) ? NO:YES theEnabled3:(receivedArgs[2]==0) ? NO:YES theEnabled4:(receivedArgs[3]==0) ? NO:YES];
+		[((__bridge AppController*)context) setLeds:(receivedArgs[0]==0) ? NO:YES theEnabled2:(receivedArgs[1]==0) ? NO:YES theEnabled3:(receivedArgs[2]==0) ? NO:YES theEnabled4:(receivedArgs[3]==0) ? NO:YES];
 	}
 }
 
@@ -321,7 +328,6 @@ void SetLED(void *context, int arglen, const void *args,
 	// sending OSC port
 	LOG(@"OSC connecting to %s:%hu...", address, portNumber);
     port   = [OSCPort oscPortToAddress:address portNumber: portNumber];
-	[port retain];
 	[port sendTo:"/wii/connected" types:"i", 1];
     
 	
@@ -329,35 +335,28 @@ void SetLED(void *context, int arglen, const void *args,
     LOG(@"OSC Receiving on port %hu...", RcvPortNumber);
 	portIn = [[OSCInPort alloc] initPort: RcvPortNumber];
 	OSCcontainer wiiContainer = [portIn newContainerNamed: "wii"];
-	[portIn newMethodNamed: "batterylevel" under: wiiContainer callback:GetBatteryLevel context: self];
-	[portIn newMethodNamed: "forcefeedback" under: wiiContainer callback:SetForceFeedback context: self];
-	[portIn newMethodNamed: "led" under: wiiContainer callback:SetLED context: self];
+	[portIn newMethodNamed:"batterylevel" under: wiiContainer callback:GetBatteryLevel context: (__bridge void *)(self)];
+	[portIn newMethodNamed:"forcefeedback" under: wiiContainer callback:SetForceFeedback context: (__bridge void *)(self)];
+	[portIn newMethodNamed:"led" under: wiiContainer callback:SetLED context: (__bridge void *)(self)];
 	[portIn start];
     
-	modes = [@[@"Nothing", @"Key", @"\tReturn", @"\tTab", @"\tEsc", @"\tBackspace", @"\tUp", @"\tDown", @"\tLeft",@"\tRight", @"\tPage Up", @"\tPage Down", @"\tF1", @"\tF2", @"\tF3", @"\tF4", @"\tF5", @"\tF6", @"\tF7", @"\tF8", @"\tF9", @"\tF10", @"\tF11", @"\tF12", @"Left Click", @"Left Click2", @"Right Click", @"Right Click2", @"Toggle Mouse (Motion)", @"Toggle Mouse (IR)"] retain];
+	modes = @[@"Nothing", @"Key", @"\tReturn", @"\tTab", @"\tEsc", @"\tBackspace", @"\tUp", @"\tDown", @"\tLeft",@"\tRight", @"\tPage Up", @"\tPage Down", @"\tF1", @"\tF2", @"\tF3", @"\tF4", @"\tF5", @"\tF6", @"\tF7", @"\tF8", @"\tF9", @"\tF10", @"\tF11", @"\tF12", @"Left Click", @"Left Click2", @"Right Click", @"Right Click2", @"Toggle Mouse (Motion)", @"Toggle Mouse (IR)"];
     
 	
-	id transformer = [[[WidgetsEnableTransformer alloc] init] autorelease];
+	id transformer = [[WidgetsEnableTransformer alloc] init];
 	[NSValueTransformer setValueTransformer:transformer forName:@"WidgetsEnableTransformer"];
 	/**
      id transformer2 = [[[KeyCodeTransformer alloc] init] autorelease];
      [NSValueTransformer setValueTransformer:transformer2 forName:@"KeyCodeTransformer"];
      **/
-	id transformer3 = [[[WidgetsEnableTransformer2 alloc] init] autorelease];
+	id transformer3 = [[WidgetsEnableTransformer2 alloc] init];
 	[NSValueTransformer setValueTransformer:transformer3 forName:@"WidgetsEnableTransformer2"];
     
-	NSSortDescriptor* descriptor = [[[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES] autorelease];
-	configSortDescriptors = [@[descriptor] retain];
+	NSSortDescriptor* descriptor = [[NSSortDescriptor alloc] initWithKey:@"name" ascending:YES];
+	configSortDescriptors = @[descriptor];
 	return self;
 }
 
-- (void) dealloc
-{
-	[wii release];
-	[discovery release];
-	[configSortDescriptors release];
-	[super dealloc];
-}
 
 -(void)awakeFromNib{
     
@@ -499,7 +498,6 @@ void SetLED(void *context, int arglen, const void *args,
 
 
 - (void) wiiRemoteDisconnected:(IOBluetoothDevice*)device {
-	[wii release];
 	wii = nil;
     
 	[textView setString:[NSString stringWithFormat:@"%@\n===== lost connection with WiiRemote =====", [textView string]]];
@@ -2402,7 +2400,7 @@ void SetLED(void *context, int arglen, const void *args,
 	[port sendTo:"/wii/connected" types:"i", 1];
 
 	// the wiimote must be retained because the discovery provides us with an autoreleased object
-	wii = [wiimote retain];
+	wii = wiimote;
 	[wiimote setDelegate:self];
 	
 	[textView setString:[NSString stringWithFormat:@"%@\n===== Connected to WiiRemote =====", [textView string]]];
@@ -2444,7 +2442,6 @@ void SetLED(void *context, int arglen, const void *args,
     [textView setString:[NSString stringWithFormat:@"%@\nChanged receive port to %u =====", [textView string], myRcvPort]];
 	
 	port   = [OSCPort oscPortToAddress:myAddress portNumber: myRemotePort];
-	[port retain];
 	[port sendTo:"/wii/connected" types:"i", 1];
     
     //[portIn stop];

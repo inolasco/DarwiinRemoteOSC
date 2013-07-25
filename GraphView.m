@@ -10,9 +10,9 @@
 
 - (void)awakeFromNib{
 	lock  = [[NSLock alloc] init];
-	datax = [[NSMutableArray array] retain];
-	datay = [[NSMutableArray array] retain];
-	dataz = [[NSMutableArray array] retain];
+	datax = [NSMutableArray array];
+	datay = [NSMutableArray array];
+	dataz = [NSMutableArray array];
 	_freshGrid = TRUE;
 }
 
@@ -41,7 +41,7 @@
 	};
 	
 	NSOpenGLPixelFormat* pFormat;
-	pFormat = [ [ [ NSOpenGLPixelFormat alloc ] initWithAttributes : attr ] autorelease ];
+	pFormat = [ [ NSOpenGLPixelFormat alloc ] initWithAttributes : attr ];
 	self = [ super initWithFrame : frameRect pixelFormat : pFormat ];
 	[ [ self openGLContext ] makeCurrentContext ];
 	glClearColor( 1.0, 1.0, 1.0, 1.0 );
@@ -232,9 +232,6 @@
 	[datax addObject:pointX];
 	[datay addObject:pointY];
 	[dataz addObject:pointZ];
-	[pointX release];
-	[pointY release];
-	[pointZ release];
     
 }
 

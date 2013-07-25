@@ -29,7 +29,6 @@
 	if (_ownsSocket)
 		close(_sock);
     
-    [super dealloc];
 }
 
 #pragma mark - instance creation
@@ -52,7 +51,7 @@
         return nil;
     }
     
-    return [[[self alloc] initWithSocket:sock] autorelease];
+    return [[self alloc] initWithSocket:sock];
 }
 
 - (id)initWithSocket:(int)socket
