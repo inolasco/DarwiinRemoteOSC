@@ -1,11 +1,13 @@
 # DarwiinRemoteOSC
 
-Darwiin remote with OSC extension for Max OS X (Mountain Lion)
+Darwiin remote with OSC extension for Max OS X 10.8 (Mountain Lion)
 
 Based on [DarwiinRemote 0.7] (http://sourceforge.net/projects/darwiin-remote/) and a modified WiiRemoteFramework
 OSC functionality based on https://code.google.com/p/darwiinosc/ by andreas schlegel
 
 Adapted by [Matthias Kronlachner] (www.matthiaskronlachner.com)
+
+Updated by Ivan Nolasco
 
 Changing osc ip/port send/receive settings
 -------------------------
@@ -26,9 +28,8 @@ This is very useful if you connect multiple wii controllers
 
 TODO
 -------------------------
+* Make "Find Wiimote" a stop button when searching
 * Add disconnect button
-* Convert to ARC
-    * Replace void* context with protocols
 * Remove warnings
 * Update icon to higher resolution
 * Improve UI

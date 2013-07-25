@@ -11,11 +11,6 @@ extern int *_NSGetArgc(void);
 extern char ***_NSGetEnviron(void);
 extern char **_NSGetProgname(void);
 
-@protocol lala <NSObject>
-
-
-@end
-
 @implementation AppController
 
 // http://google-toolbox-for-mac.googlecode.com/svn/trunk/UnitTesting/GTMUnitTestingUtilities.m (Apache	2.0 licence)
