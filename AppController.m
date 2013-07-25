@@ -89,16 +89,14 @@ static CGKeyCode GTMKeyCodeForCharCode(CGCharCode charCode) {
 	[wii setIRSensorEnabled:[sender state]];
 }
 
-- (IBAction)setLEDEnabled:(id)sender
+-(IBAction) setLEDEnabled:(id)sender
 {
-    
 	[wii setLEDEnabled1:[led1 state] enabled2:[led2 state] enabled3:[led3 state] enabled4:[led4 state]];
-    
-	[wiimoteQCView setValue:[NSNumber numberWithBool:[led1 state] ] forInputKey:[NSString stringWithString:@"LED_1"]];
-	[wiimoteQCView setValue:[NSNumber numberWithBool:[led2 state] ] forInputKey:[NSString stringWithString:@"LED_2"]];
-	[wiimoteQCView setValue:[NSNumber numberWithBool:[led3 state] ] forInputKey:[NSString stringWithString:@"LED_3"]];
-	[wiimoteQCView setValue:[NSNumber numberWithBool:[led4 state] ] forInputKey:[NSString stringWithString:@"LED_4"]];
-    
+
+	[wiimoteQCView setValue:@([led1 state]) forInputKey:@"LED_1"];
+	[wiimoteQCView setValue:@([led2 state]) forInputKey:@"LED_2"];
+	[wiimoteQCView setValue:@([led3 state]) forInputKey:@"LED_3"];
+	[wiimoteQCView setValue:@([led4 state]) forInputKey:@"LED_4"];
 }
 
 /**
@@ -166,20 +164,21 @@ static CGKeyCode GTMKeyCodeForCharCode(CGCharCode charCode) {
 		// Select file
 		// XXX: Might want to include a file suggestion http://www.cocoabuilder.com/archive/message/cocoa/2002/8/1/56817
 		savePanel = [NSSavePanel savePanel];
-		[savePanel setDirectory:NSHomeDirectory()];
+        [savePanel setDirectoryURL:[NSURL URLWithString:NSHomeDirectory()]];
+        
 		int ret = [savePanel runModal];
 		
 		// Create file
 		if (ret) {
 			// Try to write csv headers
-			ret = [[NSFileManager defaultManager] createFileAtPath:[savePanel filename]
+			ret = [[NSFileManager defaultManager] createFileAtPath:savePanel.URL.path
                                                           contents:[@"time,AccX,AccY,AccZ,pressureTR, pressureBR, pressureTL, pressureBL,rawPressureTR,rawPressureBR,rawPressureTL,rawPressureBL\n" dataUsingEncoding: NSASCIIStringEncoding] attributes:nil];
 		}
         
 		// Let's save the data succesfully selected and created file
 		if (ret) {
 			// Update display and status
-			recordHandle = [[NSFileHandle fileHandleForWritingAtPath:[savePanel filename]] retain];
+			recordHandle = [[NSFileHandle fileHandleForWritingAtPath:savePanel.URL.path] retain];
 			// set to end will avoid overwriting header values ;-)
 			[recordHandle seekToEndOfFile];
 			
@@ -243,17 +242,18 @@ void GetBatteryLevel(void *context, int arglen, const void *args,
 }
 
 
-SetForceFeedback(void *context, int arglen, const void *args,
+void SetForceFeedback(void *context, int arglen, const void *args,
                  OSCTimeTag when, NetworkReturnAddressPtr returnAddr)
 {
 	int receivedArgs[1];
 	NSString* errorMessage = @"Incorrect arguments to noteOn. Arguments should be int channel, int note, int velocity";
-	if (ReadOSCInts(arglen, args, 1, receivedArgs, errorMessage))
+	if (ReadOSCInts(arglen, args, 1, receivedArgs, errorMessage)) {
         if(receivedArgs[0]==0) {
             [context setForceFeedback:NO];
         } else {
             [context setForceFeedback:YES];
         }
+    }
 }
 
 
@@ -284,8 +284,8 @@ void SetLED(void *context, int arglen, const void *args,
 	[port sendTo:"/wii/batterylevel" types:"f", (float)[wii batteryLevel]];
 }
 
-- (id)init{
-	
+-(id) init
+{
     // OSC STUFF
     //char address[16];
     address = (char*)malloc(16);
@@ -303,25 +303,20 @@ void SetLED(void *context, int arglen, const void *args,
     NSInteger sndPort = [standardDefaults integerForKey:@"port"];
     NSInteger rcvPort = [standardDefaults integerForKey:@"rcv_port"];
     
-    //LOG (@"aString argument: %@\nanInteger argument: %d", aString, anInteger);
-    
+    //LOG(@"aString argument: %@\nanInteger argument: %d", aString, anInteger);
     
     // commandline arguments -> very ugly...
-    
-    if (sndAddr)
-    {
-        address = [sndAddr UTF8String];
+    if (sndAddr) {
+        address = (char*)[sndAddr UTF8String];
     }
-    if (sndPort)
-    {
+
+    if (sndPort) {
         portNumber = sndPort;
     }
     
-    if (rcvPort)
-    {
+    if (rcvPort) {
         RcvPortNumber = rcvPort;
     }
-    
     
 	// sending OSC port
 	LOG(@"OSC connecting to %s:%hu...", address, portNumber);
@@ -640,13 +635,13 @@ void SetLED(void *context, int arglen, const void *args,
         float scaledY = ((irData[0].y / 768.0) * 1.5) - 0.75;
         float scaledSize = irData[0].s / 16.0;
         
-        [irQCView setValue:@(scaledX) forInputKey:[NSString stringWithString:@"Point1X"]];
-        [irQCView setValue:@(scaledY) forInputKey:[NSString stringWithString:@"Point1Y"]];
-        [irQCView setValue:@(scaledSize) forInputKey:[NSString stringWithString:@"Point1Size"]];
+        [irQCView setValue:@(scaledX) forInputKey:@"Point1X"];
+        [irQCView setValue:@(scaledY) forInputKey:@"Point1Y"];
+        [irQCView setValue:@(scaledSize) forInputKey:@"Point1Size"];
         
-        [irQCView setValue:@YES forInputKey:[NSString stringWithString:@"Point1Enable"]];
+        [irQCView setValue:@YES forInputKey:@"Point1Enable"];
     } else {
-        [irQCView setValue:@NO forInputKey:[NSString stringWithString:@"Point1Enable"]];
+        [irQCView setValue:@NO forInputKey:@"Point1Enable"];
     }
     
     if (irData[1].s != 0xF) {
@@ -654,13 +649,13 @@ void SetLED(void *context, int arglen, const void *args,
         float scaledY = ((irData[1].y / 768.0) * 1.5) - 0.75;
         float scaledSize = irData[1].s / 16.0;
         
-        [irQCView setValue:@(scaledX) forInputKey:[NSString stringWithString:@"Point2X"]];
-        [irQCView setValue:@(scaledY) forInputKey:[NSString stringWithString:@"Point2Y"]];
-        [irQCView setValue:@(scaledSize) forInputKey:[NSString stringWithString:@"Point2Size"]];
+        [irQCView setValue:@(scaledX) forInputKey:@"Point2X"];
+        [irQCView setValue:@(scaledY) forInputKey:@"Point2Y"];
+        [irQCView setValue:@(scaledSize) forInputKey:@"Point2Size"];
         
-        [irQCView setValue:@YES forInputKey:[NSString stringWithString:@"Point2Enable"]];
+        [irQCView setValue:@YES forInputKey:@"Point2Enable"];
     } else {
-        [irQCView setValue:@NO forInputKey:[NSString stringWithString:@"Point2Enable"]];
+        [irQCView setValue:@NO forInputKey:@"Point2Enable"];
     }
     
     if (irData[2].s != 0xF) {
@@ -668,26 +663,26 @@ void SetLED(void *context, int arglen, const void *args,
         float scaledY = ((irData[2].y / 768.0) * 1.5) - 0.75;
         float scaledSize = irData[2].s / 16.0;
         
-        [irQCView setValue:@(scaledX) forInputKey:[NSString stringWithString:@"Point3X"]];
-        [irQCView setValue:@(scaledY) forInputKey:[NSString stringWithString:@"Point3Y"]];
-        [irQCView setValue:@(scaledSize) forInputKey:[NSString stringWithString:@"Point3Size"]];
+        [irQCView setValue:@(scaledX) forInputKey:@"Point3X"];
+        [irQCView setValue:@(scaledY) forInputKey:@"Point3Y"];
+        [irQCView setValue:@(scaledSize) forInputKey:@"Point3Size"];
         
-        [irQCView setValue:@YES forInputKey:[NSString stringWithString:@"Point3Enable"]];
+        [irQCView setValue:@YES forInputKey:@"Point3Enable"];
     } else {
-        [irQCView setValue:@NO forInputKey:[NSString stringWithString:@"Point3Enable"]];
+        [irQCView setValue:@NO forInputKey:@"Point3Enable"];
     }
     if (irData[3].s != 0xF) {
         float scaledX = ((irData[3].x / 1024.0) * 2.0) - 1.0;
         float scaledY = ((irData[3].y / 768.0) * 1.5) - 0.75;
         float scaledSize = irData[3].s / 16.0;
         
-        [irQCView setValue:@(scaledX) forInputKey:[NSString stringWithString:@"Point4X"]];
-        [irQCView setValue:@(scaledY) forInputKey:[NSString stringWithString:@"Point4Y"]];
-        [irQCView setValue:@(scaledSize) forInputKey:[NSString stringWithString:@"Point4Size"]];
+        [irQCView setValue:@(scaledX) forInputKey:@"Point4X"];
+        [irQCView setValue:@(scaledY) forInputKey:@"Point4Y"];
+        [irQCView setValue:@(scaledSize) forInputKey:@"Point4Size"];
         
-        [irQCView setValue:@YES forInputKey:[NSString stringWithString:@"Point4Enable"]];
+        [irQCView setValue:@YES forInputKey:@"Point4Enable"];
     } else {
-        [irQCView setValue:@NO forInputKey:[NSString stringWithString:@"Point4Enable"]];
+        [irQCView setValue:@NO forInputKey:@"Point4Enable"];
     }
 }
 
@@ -700,169 +695,172 @@ void SetLED(void *context, int arglen, const void *args,
 	if (type == WiiRemoteAButton){
 		map = [mappings valueForKeyPath:@"wiimote.a"];
 		[aButton setEnabled:isPressed];
-		[wiimoteQCView setValue:@(isPressed) forInputKey:[NSString stringWithString:@"A_Button"]];
+		[wiimoteQCView setValue:@(isPressed) forInputKey:@"A_Button"];
         [port sendTo:"/wii/button/a" types:"i", isPressedInt];
 		
 	}else if (type == WiiRemoteBButton){
 		map = [mappings valueForKeyPath:@"wiimote.b"];
 		[bButton setEnabled:isPressed];
-		[wiimoteQCView setValue:@(isPressed) forInputKey:[NSString stringWithString:@"B_Button"]];
+		[wiimoteQCView setValue:@(isPressed) forInputKey:@"B_Button"];
         [port sendTo:"/wii/button/b" types:"i", isPressedInt];
         
 	}else if (type == WiiRemoteUpButton){
 		map = [mappings valueForKeyPath:@"wiimote.up"];
 		[upButton setEnabled:isPressed];
-		[wiimoteQCView setValue:@(isPressed) forInputKey:[NSString stringWithString:@"Up"]];
+		[wiimoteQCView setValue:@(isPressed) forInputKey:@"Up"];
         [port sendTo:"/wii/button/up" types:"i", isPressedInt];
         
 	}else if (type == WiiRemoteDownButton){
 		map = [mappings valueForKeyPath:@"wiimote.down"];
 		[downButton setEnabled:isPressed];
-		[wiimoteQCView setValue:@(isPressed) forInputKey:[NSString stringWithString:@"Down"]];
+		[wiimoteQCView setValue:@(isPressed) forInputKey:@"Down"];
         [port sendTo:"/wii/button/down" types:"i", isPressedInt];
         
 	}else if (type == WiiRemoteLeftButton){
 		map = [mappings valueForKeyPath:@"wiimote.left"];
 		[leftButton setEnabled:isPressed];
-		[wiimoteQCView setValue:@(isPressed) forInputKey:[NSString stringWithString:@"Left"]];
+		[wiimoteQCView setValue:@(isPressed) forInputKey:@"Left"];
         [port sendTo:"/wii/button/left" types:"i", isPressedInt];
         
 	}else if (type == WiiRemoteRightButton){
 		map = [mappings valueForKeyPath:@"wiimote.right"];
 		[rightButton setEnabled:isPressed];
-		[wiimoteQCView setValue:@(isPressed) forInputKey:[NSString stringWithString:@"Right"]];
+		[wiimoteQCView setValue:@(isPressed) forInputKey:@"Right"];
         [port sendTo:"/wii/button/right" types:"i", isPressedInt];
         
 	}else if (type == WiiRemoteMinusButton){
 		map = [mappings valueForKeyPath:@"wiimote.minus"];
 		[minusButton setEnabled:isPressed];
-		[wiimoteQCView setValue:@(isPressed) forInputKey:[NSString stringWithString:@"Minus"]];
+		[wiimoteQCView setValue:@(isPressed) forInputKey:@"Minus"];
         [port sendTo:"/wii/button/minus" types:"i", isPressedInt];
         
 	}else if (type == WiiRemotePlusButton){
 		map = [mappings valueForKeyPath:@"wiimote.plus"];
 		[plusButton setEnabled:isPressed];
-		[wiimoteQCView setValue:@(isPressed) forInputKey:[NSString stringWithString:@"Plus"]];
+		[wiimoteQCView setValue:@(isPressed) forInputKey:@"Plus"];
         [port sendTo:"/wii/button/plus" types:"i", isPressedInt];
         
 	}else if (type == WiiRemoteHomeButton){
 		map = [mappings valueForKeyPath:@"wiimote.home"];
 		[homeButton setEnabled:isPressed];
-		[wiimoteQCView setValue:@(isPressed) forInputKey:[NSString stringWithString:@"Home"]];
+		[wiimoteQCView setValue:@(isPressed) forInputKey:@"Home"];
         [port sendTo:"/wii/button/home" types:"i", isPressedInt];
         
 	}else if (type == WiiRemoteOneButton){
 		map = [mappings valueForKeyPath:@"wiimote.one"];
 		[oneButton setEnabled:isPressed];
-		[wiimoteQCView setValue:@(isPressed) forInputKey:[NSString stringWithString:@"One"]];
+		[wiimoteQCView setValue:@(isPressed) forInputKey:@"One"];
         [port sendTo:"/wii/button/one" types:"i", isPressedInt];
         
 	}else if (type == WiiRemoteTwoButton){
 		map = [mappings valueForKeyPath:@"wiimote.two"];
 		[twoButton setEnabled:isPressed];
-		[wiimoteQCView setValue:@(isPressed) forInputKey:[NSString stringWithString:@"Two"]];
+		[wiimoteQCView setValue:@(isPressed) forInputKey:@"Two"];
         [port sendTo:"/wii/button/two" types:"i", isPressedInt];
         
 	}else if (type == WiiNunchukCButton){
 		map = [mappings valueForKeyPath:@"nunchuk.c"];
-		[joystickQCView setValue:@(isPressed) forInputKey:[NSString stringWithString:@"CEnable"]];
+		[joystickQCView setValue:@(isPressed) forInputKey:@"CEnable"];
         [port sendTo:"/nunchuk/button/c" types:"i", isPressedInt];
         
 	}else if (type == WiiNunchukZButton){
 		map = [mappings valueForKeyPath:@"nunchuk.z"];
-		[joystickQCView setValue:@(isPressed) forInputKey:[NSString stringWithString:@"ZEnable"]];
+		[joystickQCView setValue:@(isPressed) forInputKey:@"ZEnable"];
         [port sendTo:"/nunchuk/button/z" types:"i", isPressedInt];
 	}
 	
 	switch (type) {
 		case WiiClassicControllerXButton:
 			map = [mappings valueForKeyPath:@"classiccontroller.x"];
-			[ccQCView setValue:@(isPressed) forInputKey:[NSString stringWithString:@"X"]];
+			[ccQCView setValue:@(isPressed) forInputKey:@"X"];
             [port sendTo:"/classic/button/x" types:"i", isPressedInt];
             break;
             
 		case WiiClassicControllerYButton:
 			map = [mappings valueForKeyPath:@"classiccontroller.y"];
-			[ccQCView setValue:@(isPressed) forInputKey:[NSString stringWithString:@"Y"]];
+			[ccQCView setValue:@(isPressed) forInputKey:@"Y"];
             [port sendTo:"/classic/button/y" types:"i", isPressedInt];
             break;
             
 		case WiiClassicControllerAButton:
 			map = [mappings valueForKeyPath:@"classiccontroller.a"];
-			[ccQCView setValue:@(isPressed) forInputKey:[NSString stringWithString:@"A"]];
+			[ccQCView setValue:@(isPressed) forInputKey:@"A"];
             [port sendTo:"/classic/button/a" types:"i", isPressedInt];
             break;
             
 		case WiiClassicControllerBButton:
 			map = [mappings valueForKeyPath:@"classiccontroller.b"];
-			[ccQCView setValue:@(isPressed) forInputKey:[NSString stringWithString:@"B"]];
+			[ccQCView setValue:@(isPressed) forInputKey:@"B"];
             [port sendTo:"/classic/button/b" types:"i", isPressedInt];
             break;
             
 		case WiiClassicControllerLButton:
 			map = [mappings valueForKeyPath:@"classiccontroller.l"];
-			[ccQCView setValue:@(isPressed) forInputKey:[NSString stringWithString:@"L"]];
+			[ccQCView setValue:@(isPressed) forInputKey:@"L"];
             [port sendTo:"/classic/button/l" types:"i", isPressedInt];
             break;
             
 		case WiiClassicControllerRButton:
 			map = [mappings valueForKeyPath:@"classiccontroller.r"];
-			[ccQCView setValue:@(isPressed) forInputKey:[NSString stringWithString:@"R"]];
+			[ccQCView setValue:@(isPressed) forInputKey:@"R"];
             [port sendTo:"/classic/button/r" types:"i", isPressedInt];
             break;
             
 		case WiiClassicControllerZLButton:
 			map = [mappings valueForKeyPath:@"classiccontroller.zl"];
-			[ccQCView setValue:@(isPressed) forInputKey:[NSString stringWithString:@"ZL"]];
+			[ccQCView setValue:@(isPressed) forInputKey:@"ZL"];
             [port sendTo:"/classic/button/zl" types:"i", isPressedInt];
             break;
             
 		case WiiClassicControllerZRButton:
 			map = [mappings valueForKeyPath:@"classiccontroller.zr"];
-			[ccQCView setValue:@(isPressed) forInputKey:[NSString stringWithString:@"ZR"]];
+			[ccQCView setValue:@(isPressed) forInputKey:@"ZR"];
             [port sendTo:"/classic/button/zr" types:"i", isPressedInt];
             break;
             
 		case WiiClassicControllerUpButton:
 			map = [mappings valueForKeyPath:@"classiccontroller.up"];
-			[ccQCView setValue:@(isPressed) forInputKey:[NSString stringWithString:@"Up"]];
+			[ccQCView setValue:@(isPressed) forInputKey:@"Up"];
             [port sendTo:"/classic/button/up" types:"i", isPressedInt];
             break;
             
 		case WiiClassicControllerDownButton:
 			map = [mappings valueForKeyPath:@"classiccontroller.down"];
-			[ccQCView setValue:@(isPressed) forInputKey:[NSString stringWithString:@"Down"]];
+			[ccQCView setValue:@(isPressed) forInputKey:@"Down"];
             [port sendTo:"/classic/button/down" types:"i", isPressedInt];
             break;
             
 		case WiiClassicControllerLeftButton:
 			map = [mappings valueForKeyPath:@"classiccontroller.left"];
-			[ccQCView setValue:@(isPressed) forInputKey:[NSString stringWithString:@"Left"]];
+			[ccQCView setValue:@(isPressed) forInputKey:@"Left"];
             [port sendTo:"/classic/button/left" types:"i", isPressedInt];
             break;
             
 		case WiiClassicControllerRightButton:
 			map = [mappings valueForKeyPath:@"classiccontroller.right"];
-			[ccQCView setValue:@(isPressed) forInputKey:[NSString stringWithString:@"Right"]];
+			[ccQCView setValue:@(isPressed) forInputKey:@"Right"];
             [port sendTo:"/classic/button/right" types:"i", isPressedInt];
             break;
             
 		case WiiClassicControllerMinusButton:
 			map = [mappings valueForKeyPath:@"classiccontroller.minus"];
-			[ccQCView setValue:@(isPressed) forInputKey:[NSString stringWithString:@"Minus"]];
+			[ccQCView setValue:@(isPressed) forInputKey:@"Minus"];
             [port sendTo:"/classic/button/minus" types:"i", isPressedInt];
             break;
             
 		case WiiClassicControllerHomeButton:
 			map = [mappings valueForKeyPath:@"classiccontroller.home"];
-			[ccQCView setValue:@(isPressed) forInputKey:[NSString stringWithString:@"Home"]];
+			[ccQCView setValue:@(isPressed) forInputKey:@"Home"];
             [port sendTo:"/classic/button/home" types:"i", isPressedInt];
             break;
             
 		case WiiClassicControllerPlusButton:
 			map = [mappings valueForKeyPath:@"classiccontroller.plus"];
-			[ccQCView setValue:@(isPressed) forInputKey:[NSString stringWithString:@"Plus"]];
+			[ccQCView setValue:@(isPressed) forInputKey:@"Plus"];
             [port sendTo:"/classic/button/plus" types:"i", isPressedInt];
+            break;
+            
+            default:
             break;
 	}
 	
@@ -1278,8 +1276,8 @@ void SetLED(void *context, int arglen, const void *args,
         [port sendTo:"/nunchuk/joystick" types:"ff", (float)scaledX,(float)scaledY];
         
         // LOG(@"Joystick X = %f  Y= %f", scaledX, scaledY);
-        [joystickQCView setValue:@(scaledX) forInputKey:[NSString stringWithString:@"X_Position"]];
-        [joystickQCView setValue:@(scaledY) forInputKey:[NSString stringWithString:@"Y_Position"]];
+        [joystickQCView setValue:@(scaledX) forInputKey:@"X_Position"];
+        [joystickQCView setValue:@(scaledY) forInputKey:@"Y_Position"];
 		
         [joystickX setStringValue: [NSString stringWithFormat:@"%00X", tiltX]];
         [joystickY setStringValue: [NSString stringWithFormat:@"%00X", tiltY]];
@@ -1333,10 +1331,10 @@ void SetLED(void *context, int arglen, const void *args,
 		[bPressureBR setStringValue: [NSString stringWithFormat:@"%.2fkg", pressureBR]];
 		[bPressureTL setStringValue: [NSString stringWithFormat:@"%.2fkg", pressureTL]];
 		[bPressureBL setStringValue: [NSString stringWithFormat:@"%.2fkg", pressureBL]];
-		[bbQCView setValue:[NSNumber numberWithFloat: 0.1 + (pressureTR/5)] forInputKey:[NSString stringWithString:@"sizeTR"]];
-		[bbQCView setValue:[NSNumber numberWithFloat: 0.1 + (pressureBR/5)] forInputKey:[NSString stringWithString:@"sizeBR"]];
-		[bbQCView setValue:[NSNumber numberWithFloat: 0.1 + (pressureTL/5)] forInputKey:[NSString stringWithString:@"sizeTL"]];
-		[bbQCView setValue:[NSNumber numberWithFloat: 0.1 + (pressureBL/5)] forInputKey:[NSString stringWithString:@"sizeBL"]];
+		[bbQCView setValue:[NSNumber numberWithFloat: 0.1 + (pressureTR/5)] forInputKey:@"sizeTR"];
+		[bbQCView setValue:[NSNumber numberWithFloat: 0.1 + (pressureBR/5)] forInputKey:@"sizeBR"];
+		[bbQCView setValue:[NSNumber numberWithFloat: 0.1 + (pressureTL/5)] forInputKey:@"sizeTL"];
+		[bbQCView setValue:[NSNumber numberWithFloat: 0.1 + (pressureBL/5)] forInputKey:@"sizeBL"];
 		
 		//This part is for writing data to a file.  Data is scaled to local gravitational acceleration and contains absolute local times.
 		
@@ -2393,14 +2391,16 @@ void SetLED(void *context, int arglen, const void *args,
     [port sendTo:"/wii/connected" types:"i", 0];
 }
 
-- (void) willStartWiimoteConnections {
+-(void) willStartWiimoteConnections
+{
 	[textView setString:[NSString stringWithFormat:@"%@\n===== WiiRemote discovered.  Opening connection. =====", [textView string]]];
 }
 
-- (void) WiiRemoteDiscovered:(WiiRemote*)wiimote {
-	
+-(void) WiiRemoteDiscovered:(WiiRemote*)wiimote
+{	
 	//	[discovery stop];
 	[port sendTo:"/wii/connected" types:"i", 1];
+
 	// the wiimote must be retained because the discovery provides us with an autoreleased object
 	wii = [wiimote retain];
 	[wiimote setDelegate:self];
@@ -2409,7 +2409,7 @@ void SetLED(void *context, int arglen, const void *args,
 	[discoverySpinner stopAnimation:self];
 	
 	[wiimote setLEDEnabled1:YES enabled2:NO enabled3:NO enabled4:NO];
-	[wiimoteQCView setValue:[NSNumber numberWithBool:[led1 state] ] forInputKey:[NSString stringWithString:@"LED_1"]];
+	[wiimoteQCView setValue:[NSNumber numberWithBool:[led1 state] ] forInputKey:@"LED_1"];
     
 	[wiimote setMotionSensorEnabled:YES];
     //	[wiimote setIRSensorEnabled:YES];
@@ -2421,8 +2421,8 @@ void SetLED(void *context, int arglen, const void *args,
 	[mappingController setSelectionIndex:[[defaults objectForKey:@"selection"] intValue]];
 }
 
-- (IBAction)setRemoteAddress:(id)sender{
-    
+-(IBAction) setRemoteAddress:(id)sender
+{
     if ([[theRemoteAddress stringValue] length] == 0){
 		return;
 	}
@@ -2439,8 +2439,9 @@ void SetLED(void *context, int arglen, const void *args,
 	char myAddress[len+1];
 	strcpy(myAddress, temp);
 	
-	[textView setString:[NSString stringWithFormat:@"%@\n===== changing remote address to %s : %u =====", [textView string], myAddress, myRemotePort]];
-    [textView setString:[NSString stringWithFormat:@"%@\n===== changed receive port to %u =====", [textView string], myRcvPort]];
+    
+	[textView setString:[NSString stringWithFormat:@"%@\nChanging remote address to %s : %u =====", [textView string], myAddress, myRemotePort]];
+    [textView setString:[NSString stringWithFormat:@"%@\nChanged receive port to %u =====", [textView string], myRcvPort]];
 	
 	port   = [OSCPort oscPortToAddress:myAddress portNumber: myRemotePort];
 	[port retain];
@@ -2457,9 +2458,6 @@ void SetLED(void *context, int arglen, const void *args,
      [portIn newMethodNamed: "led" under: wiiContainer callback:SetLED context: self];
      */
 	//[portIn start];
-    
-    
 }
-
 
 @end

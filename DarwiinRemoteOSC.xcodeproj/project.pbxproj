@@ -37,7 +37,7 @@
 		2CFB16F41799C0B900A35145 /* README in Resources */ = {isa = PBXBuildFile; fileRef = 2CFB16E61799C0B900A35145 /* README */; };
 		2CFB16F51799C0B900A35145 /* tags in Resources */ = {isa = PBXBuildFile; fileRef = 2CFB16E71799C0B900A35145 /* tags */; };
 		2CFB16F81799C17000A35145 /* MainMenu.nib in Resources */ = {isa = PBXBuildFile; fileRef = 2CFB16F71799C17000A35145 /* MainMenu.nib */; };
-		2CFB16FA1799D89600A35145 /* README.markdown in Resources */ = {isa = PBXBuildFile; fileRef = 2CFB16F91799D89500A35145 /* README.markdown */; };
+		2CFB16FA1799D89600A35145 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 2CFB16F91799D89500A35145 /* README.md */; };
 		2CFB17001799D8A100A35145 /* addressSpace.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2CFB16FC1799D8A100A35145 /* addressSpace.txt */; };
 		2CFB17011799D8A100A35145 /* COPYRIGHT.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2CFB16FD1799D8A100A35145 /* COPYRIGHT.txt */; };
 		2CFB17021799D8A100A35145 /* HISTORY.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2CFB16FE1799D8A100A35145 /* HISTORY.txt */; };
@@ -120,7 +120,7 @@
 		2CFB16E61799C0B900A35145 /* README */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README; sourceTree = "<group>"; };
 		2CFB16E71799C0B900A35145 /* tags */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = tags; sourceTree = "<group>"; };
 		2CFB16F71799C17000A35145 /* MainMenu.nib */ = {isa = PBXFileReference; lastKnownFileType = wrapper.nib; path = MainMenu.nib; sourceTree = "<group>"; };
-		2CFB16F91799D89500A35145 /* README.markdown */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.markdown; sourceTree = "<group>"; };
+		2CFB16F91799D89500A35145 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = README.md; sourceTree = "<group>"; };
 		2CFB16FC1799D8A100A35145 /* addressSpace.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = addressSpace.txt; sourceTree = "<group>"; };
 		2CFB16FD1799D8A100A35145 /* COPYRIGHT.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = COPYRIGHT.txt; sourceTree = "<group>"; };
 		2CFB16FE1799D8A100A35145 /* HISTORY.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = HISTORY.txt; sourceTree = "<group>"; };
@@ -229,7 +229,7 @@
 		29B97314FDCFA39411CA2CEA /* WiiRemote */ = {
 			isa = PBXGroup;
 			children = (
-				2CFB16F91799D89500A35145 /* README.markdown */,
+				2CFB16F91799D89500A35145 /* README.md */,
 				2CFB16FB1799D8A100A35145 /* Docs */,
 				2CFB16CA1799C0B800A35145 /* Lib */,
 				2CFB16C41799921E00A35145 /* Utils */,
@@ -437,7 +437,7 @@
 				2CFB16F41799C0B900A35145 /* README in Resources */,
 				2CFB16F51799C0B900A35145 /* tags in Resources */,
 				2CFB16F81799C17000A35145 /* MainMenu.nib in Resources */,
-				2CFB16FA1799D89600A35145 /* README.markdown in Resources */,
+				2CFB16FA1799D89600A35145 /* README.md in Resources */,
 				2CFB17001799D8A100A35145 /* addressSpace.txt in Resources */,
 				2CFB17011799D8A100A35145 /* COPYRIGHT.txt in Resources */,
 				2CFB17021799D8A100A35145 /* HISTORY.txt in Resources */,
