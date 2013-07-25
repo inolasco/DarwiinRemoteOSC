@@ -134,7 +134,7 @@ void* RealTimeMallocForOSC(int numBytes)
 	return YES;
 }
 
-- (void)receivePacket
+-(void) receivePacket
 {
     OSCPacketBuffer pb;
     struct NetworkReturnAddressStruct *ra;
@@ -157,13 +157,12 @@ void* RealTimeMallocForOSC(int numBytes)
 		ra->clilen = maxclilen;
 		ra->sockfd = _socket;
 		n = recvfrom(_socket, buf, capacity, 0, (struct sockaddr*)&(ra->cl_addr), &(ra->clilen));
-		if (n > 0)
-		{
+
+		if (n > 0) {
 			// accept the packet
 			int * sizep = OSCPacketBufferGetSize(pb);
 			*sizep = n;
-			OSCAcceptPacket(pb);
-			
+			OSCAcceptPacket(pb);	
 		} else {
 			OSCFreePacket(pb);
 			morePackets = NO;

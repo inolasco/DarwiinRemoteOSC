@@ -1,5 +1,5 @@
 /*
-Copyright © 1998. The Regents of the University of California (Regents). 
+Copyright ï¿½ 1998. The Regents of the University of California (Regents). 
 All Rights Reserved.
 
 Written by Matt Wright, The Center for New Music and Audio Technologies,
@@ -86,7 +86,7 @@ int OSCPaddedStrlen(const char *s) {
 }
 
 char *OSCPaddedStrcpy(char *target, const char *source) {
-    while (*target++ = *source++) {
+    while ((*target++ = *source++)) {
 	/* do nothing */
     }
 

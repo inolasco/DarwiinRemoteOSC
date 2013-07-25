@@ -9,8 +9,6 @@
 #import <Cocoa/Cocoa.h>
 
 
-@interface WidgetsEnableTransformer2 : NSValueTransformer {
-    
-}
+@interface WidgetsEnableTransformer2 : NSValueTransformer
 
 @end

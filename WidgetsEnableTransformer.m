@@ -8,25 +8,23 @@
 
 #import "WidgetsEnableTransformer.h"
 
-
 @implementation WidgetsEnableTransformer
 
-+ (Class)transformedValueClass{
++(Class) transformedValueClass
+{
 	return [NSNumber self];
 }
 
-+ (BOOL)allowsReverseTrasformation{
++(BOOL) allowsReverseTrasformation
+{
 	return NO;
 }
 
-
-- (id)transformedValue:(id)beforeObject{
-	
-	
+-(id) transformedValue:(id)beforeObject
+{
 	if (beforeObject == nil) return nil;
-	
-	
-	switch([beforeObject intValue]){
+		
+	switch([beforeObject intValue]) {
             
 		case 0:
 		case 28:
@@ -34,7 +32,6 @@
 			return [[NSNumber alloc] initWithBool:NO];
 		default:
 			return [[NSNumber alloc] initWithBool:YES];
-            
 	}
 }
 
